@@ -35,8 +35,7 @@ export default function Home(props) {
         />
       </a>
       <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Good, now use the hold buttons to keep the good cards.
       </p>
       <PokerGame cards={cards} deck_id={deck_id} />
       <pre>{JSON.stringify( props, null, 2 )}</pre>

@@ -5,10 +5,6 @@ import { getNewCards } from "../static/deck.js";
 import { score } from "../static/poker.js";
 import { simpleStrategy } from "../static/simple-strategy/index.js";
 
-interface CounterProps {
-  start: number;
-}
-
 const game = () => {
   const deck = getNewCards();
   const hand = deck.splice(0, 5);
@@ -35,7 +31,7 @@ const game = () => {
   };
 };
 
-export default function Counter(props: CounterProps) {
+export default function Counter(props) {
   const [credits, setCredits] = useState(0);
   const [spend, setSpend] = useState(0);
   const [count, setCount] = useState(0);
@@ -49,9 +45,9 @@ export default function Counter(props: CounterProps) {
   }, []);
 
   const gameLoop = (timeStamp) => {
-    const NUMBER_GAMES = props.number || 150;
+    const NUMBER_GAMES = props.count || 1;
     const run = (NUMBER_GAMES) => {
-      let games = [];
+      const games = [];
       const credits =
         Array(NUMBER_GAMES).fill().map((x, i) => i).reduce((prev) => {
           const play = game();
@@ -72,7 +68,7 @@ export default function Counter(props: CounterProps) {
     requestRef.current = requestAnimationFrame(gameLoop);
   };
   return (
-    <Fragment>
+    <>
       <div class="flex gap-2 w-full">
         <p class="flex-grow-1 font-bold text-xl">{spend / 5}</p>
         <p class="flex-grow-1 font-bold text-xl">{spend}</p>
@@ -81,6 +77,6 @@ export default function Counter(props: CounterProps) {
       <div class="flex gap-2 w-full">
         <p class="flex-grow-1 font-bold text-xl">{hand}</p>
       </div>
-    </Fragment>
+    </>
   );
 }

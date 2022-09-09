@@ -3,7 +3,7 @@ import Card from "@/islands/Card.jsx";
 // import PokerGame from "../islands/PokerGame.jsx";
 
 export const handler = {
-  GET: (req, ctx) => {
+  GET: (_req, ctx) => {
     return ctx.render({ ...ctx.state });
   },
 };
@@ -19,8 +19,7 @@ export default function Home({ data }) {
         />
       </a>
       <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Welcome! Push the button below to play some video poker.
       </p>
 
       <PokerGame />

@@ -73,8 +73,7 @@ export default function Home({ data }) {
         />
       </a>
       <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Good job. That's a hand of video poker.
       </p>
       <PokerGame cards={cards} result={[]} winner={winner} />
       {winner ? <a href="/deal">Play More</a> : <></>}
