@@ -31,7 +31,21 @@ export const handler = {
       const cards = holds.map((v, i) => v ? hand[i] : next[i]);
       const result = score(cards);
       const strategy = simpleStrategy(hand);
+      const winner =
+        JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
+          ? true
+          : false;
       // console.log(redis_data_parsed.deck.length, "deck length");
+      if (winner) {
+        if (ctx.state.streak) {
+          ctx.state.streak = ctx.state.streak + 1;
+        } else {
+          ctx.state.streak = 1;
+        }
+      } else {
+        ctx.state.streak = 0;
+      }
+      ctx.store.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }));
       ctx.store.expire(`deck-${deck_id}`, 0);
       return ctx.render({
         ...ctx.state,
@@ -40,20 +54,10 @@ export const handler = {
         result,
         strategy,
         user_strategy,
-        winner:
-          JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
-            ? true
-            : false,
+        winner,
       });
     }
     return ctx.renderNotFound();
-    // return new Response(null, {
-    //   status: 302,
-    //   headers: new Headers({
-    //     location: "/draw",
-    //   }),
-    // });
-    // // ctx.render({ ...ctx.state });
   },
 };
 
@@ -72,7 +76,7 @@ export default function Home({ data }) {
         Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
         file, and refresh.
       </p>
-      <PokerGame cards={cards} result={[]} />
+      <PokerGame cards={cards} result={[]} winner={winner} />
       {winner ? <a href="/deal">Play More</a> : <></>}
       <pre>{JSON.stringify( data, null, 2 )}</pre>
     </div>

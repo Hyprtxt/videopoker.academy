@@ -31,7 +31,7 @@ export default function Home({ data }) {
   );
 }
 
-export const PokerGame = ({ cards, result, deck_id }) => {
+export const PokerGame = ({ cards, result, deck_id, winner }) => {
   if (!cards) {
     return (
       <form action="/deal">
@@ -69,10 +69,19 @@ export const PokerGame = ({ cards, result, deck_id }) => {
     );
   }
   return (
-    <form action="/deal" method="POST">
+    <form action="/deal" method="GET">
       <div class="flex gap-2 w-full grid grid-cols-5">
         {cards.map((card, idx) => <Card card={card} idx={idx} />)}
       </div>
+      {winner
+        ? (
+          <input
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
+            type="submit"
+            value="Play Another Hand"
+          />
+        )
+        : <></>}
     </form>
   );
 };

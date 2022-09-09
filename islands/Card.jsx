@@ -27,7 +27,11 @@ export const Card = ({ card, idx, hold, active = false }) => {
         <div
           class={tw`${card_front_style} ${aspectRatio("2.5/3.5")}`}
         >
-          <div class="flex justify-center items-center text-xl font-bold">
+          <div
+            class={`flex justify-center items-center text-xl font-bold ${
+              suit === "♥" || suit === "♦" ? "text-red-500" : ""
+            }`}
+          >
             {suit} {val}
           </div>
         </div>
@@ -49,7 +53,11 @@ export const Card = ({ card, idx, hold, active = false }) => {
         }`}
         onClick={handleClick}
       >
-        <div class="flex justify-center items-center text-xl font-bold">
+        <div
+          class={`flex justify-center items-center text-xl font-bold ${
+            suit === "♥" || suit === "♦" ? "text-red-500" : ""
+          }`}
+        >
           {suit} {val}
         </div>
       </div>

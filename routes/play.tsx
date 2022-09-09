@@ -1,6 +1,4 @@
-import Counter from "../islands/Counter.tsx";
-import PokerPlayer from "../islands/PokerPlayer.tsx";
-
+import PokerPlayer from "@/islands/PokerPlayer.tsx";
 
 export default function Home() {
   return (
@@ -18,4 +16,3 @@ export default function Home() {
     </div>
   );
 }
-

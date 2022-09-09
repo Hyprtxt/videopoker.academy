@@ -1,14 +1,8 @@
-import {
-  VALUES,
-  SUITS
-} from "../deck.js";
+import { SUITS, VALUES } from "../deck.js";
 
-import { ROYAL_STRAIGHT } from "../poker.js"
+import { ROYAL_STRAIGHT } from "../poker.js";
 
-import { 
-  ALL_STRAIGHTS,
-  ONLY_HIGH_CARDS
-} from "./constants.js";
+import { ALL_STRAIGHTS, ONLY_HIGH_CARDS } from "./constants.js";
 
 // Not Exported
 
@@ -270,7 +264,7 @@ export const getStraightOutlier = (hand, straights = []) => {
     const partialStraightString = JSON.stringify(partialStraight);
     handsWithFourCards(hand).forEach((partialHand, idx) => {
       const partialHandString = JSON.stringify(
-        getCardValuesOrdered(partialHand)
+        getCardValuesOrdered(partialHand),
       );
       if (partialHandString === partialStraightString) {
         result.haveStraight = true;
