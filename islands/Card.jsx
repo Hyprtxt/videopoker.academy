@@ -20,6 +20,20 @@ export const Card = ({ card, idx, hold, active = false }) => {
       />
     );
   }
+  const [suit, val] = card;
+  if (!active) {
+    return (
+      <div class="mb-4 w-full">
+        <div
+          class={tw`${card_front_style} ${aspectRatio("2.5/3.5")}`}
+        >
+          <div class="flex justify-center items-center text-xl font-bold">
+            {suit} {val}
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (!hold) {
     hold = false;
   }
@@ -27,7 +41,6 @@ export const Card = ({ card, idx, hold, active = false }) => {
   const handleClick = (e) => {
     setHold((curr) => !curr);
   };
-  const [suit, val] = card;
   return (
     <div class="mb-4 w-full">
       <div

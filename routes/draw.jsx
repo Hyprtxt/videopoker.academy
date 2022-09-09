@@ -40,6 +40,10 @@ export const handler = {
         result,
         strategy,
         user_strategy,
+        winner:
+          JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
+            ? true
+            : false,
       });
     }
     return ctx.renderNotFound();
@@ -54,7 +58,7 @@ export const handler = {
 };
 
 export default function Home({ data }) {
-  const { cards } = data;
+  const { cards, winner } = data;
   return (
     <div class="p-4 mx-auto max-w-screen-md">
       <a href="/">
@@ -69,6 +73,7 @@ export default function Home({ data }) {
         file, and refresh.
       </p>
       <PokerGame cards={cards} result={[]} />
+      {winner ? <a href="/deal">Play More</a> : <></>}
       <pre>{JSON.stringify( data, null, 2 )}</pre>
     </div>
   );
