@@ -31,7 +31,7 @@ export default function Home({ data }) {
   );
 }
 
-export const PokerGame = ({ cards, result }) => {
+export const PokerGame = ({ cards, result, deck_id }) => {
   if (!cards) {
     return (
       <form action="/deal">
@@ -51,13 +51,14 @@ export const PokerGame = ({ cards, result }) => {
     );
   }
   if (!result) {
-    const hand = cards.splice(0, 5);
-    const next = cards.splice(0, 5);
     return (
-      <form action="/deal" method="POST">
-        <input type="hidden" name="next" value={JSON.stringify(next)} />
+      <form action="/draw" method="POST">
+        {/* <input type="hidden" name="next" value={JSON.stringify(cards)} /> */}
+        <input type="hidden" name="deck_id" value={deck_id} />
         <div class="flex gap-2 w-full grid grid-cols-5">
-          {hand.map((card, idx) => <Card card={card} idx={idx} />)}
+          {cards.map((card, idx) => (
+            <Card card={card} idx={idx} active={true} />
+          ))}
         </div>
         <input
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right"
@@ -70,7 +71,7 @@ export const PokerGame = ({ cards, result }) => {
   return (
     <form action="/deal" method="POST">
       <div class="flex gap-2 w-full grid grid-cols-5">
-        {hand.map((card, idx) => <Card card={card} idx={idx} />)}
+        {cards.map((card, idx) => <Card card={card} idx={idx} />)}
       </div>
     </form>
   );

@@ -17,13 +17,13 @@ const store = await redis.connect({
   port: REDIS_PORT,
 });
 
-const COOKIE_NAME = "uuid";
-const REDIS_KEY = (COOKIE_VALUE) => `sesh-${COOKIE_VALUE}`;
+const COOKIE_NAME = "sesh";
+const REDIS_KEY = (COOKIE_VALUE) => `devvideopoker-${COOKIE_VALUE}`;
 
 // Session Tracker
 const createSession = async () => {
   const session = {
-    cart: [],
+    // cart: [],
   };
   session[COOKIE_NAME] = crypto.randomUUID();
   await store.set(REDIS_KEY(session[COOKIE_NAME]), JSON.stringify(session));

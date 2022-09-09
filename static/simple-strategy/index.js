@@ -1,28 +1,26 @@
-import { score } from "../poker.js"
+import { score } from "../poker.js";
+
+import { VALUES } from "../deck.js";
 
 import {
-  VALUES
-} from "../deck.js"
-
-import {
+  HIGH_CARDS_ORDER,
   OUTSIDE_STRAIGHTS,
   STRATEGY_RULES,
-  HIGH_CARDS_ORDER,
 } from "./constants.js";
 
 import {
   cardSuit,
   cardValue,
-  fourOfStraights,
-  getHighCards,
-  getRoyalFlushCards,
-  getRoyalCards,
-  getFlushCards,
-  getSuitCards,
-  getStraightOutlier,
-  getFlushOutlier,
   find3toStraightFlush,
+  fourOfStraights,
   get2SuitedHighCards,
+  getFlushCards,
+  getFlushOutlier,
+  getHighCards,
+  getRoyalCards,
+  getRoyalFlushCards,
+  getStraightOutlier,
+  getSuitCards,
 } from "./functions.js";
 
 const rule = (rule_number, INPUT_HAND) => {
@@ -40,14 +38,14 @@ const rule = (rule_number, INPUT_HAND) => {
     dupes: () => {
       const map = INPUT_HAND.map((card) => cardValue(card)).reduce(
         (acc, e) => acc.set(e, (acc.get(e) || 0) + 1),
-        new Map()
+        new Map(),
       );
       const dupe_vals = [...map.entries()]
         .filter((entry) => entry[1] > 1)
         .map((entry) => entry[0]);
       return INPUT_HAND.map((card, index) => {
         return dupe_vals.filter(
-          (dupe_card_value) => dupe_card_value === cardValue(card)
+          (dupe_card_value) => dupe_card_value === cardValue(card),
         ).length;
       })
         .map((card, index) => (card === 1 ? `HOLD_${index + 1}` : ""))
@@ -175,7 +173,7 @@ const rule = (rule_number, INPUT_HAND) => {
             INPUT_HAND.filter((item, index) => {
               // console.log(index, rule10.outlierIndex)
               return index === rule10.outlierIndex ? false : item;
-            })
+            }),
           ),
           rule: STRATEGY_RULES[10].rule,
         };
@@ -221,9 +219,9 @@ const rule = (rule_number, INPUT_HAND) => {
               .sort(
                 (a, b) =>
                   HIGH_CARDS_ORDER.indexOf(cardValue(a)) -
-                  HIGH_CARDS_ORDER.indexOf(cardValue(b))
+                  HIGH_CARDS_ORDER.indexOf(cardValue(b)),
               )
-              .splice(0, 2)
+              .splice(0, 2),
           ),
           // console.log("rule 13", holdem)
           rule,

@@ -4,11 +4,11 @@ import { getNewCards } from "@/static/deck.js";
 export const handler = {
   GET: (req, ctx) => {
     const deck = getNewCards();
-    const id = crypto.randomUUID();
-    ctx.state.decks[id] = deck;
-    ctx.store.set(ctx.REDIS_KEY, { ...ctx.state });
-    // localStorage.setItem("next");
-    return ctx.render({ ...ctx.state, cards });
+    const deck_id = crypto.randomUUID();
+    const cards = [...deck].splice(0, 5);
+    ctx.store.set(`deck-${deck_id}`, JSON.stringify({ deck }));
+    ctx.store.expire(`deck-${deck_id}`, 5 * 60);
+    return ctx.render({ ...ctx.state, cards, deck_id });
   },
   POST: async (req, ctx) => {
     console.log(await req.formData());
@@ -24,7 +24,7 @@ export const handler = {
 
 export default function Home(props) {
   const { data } = props;
-  const { cards } = data;
+  const { cards, deck_id } = data;
   return (
     <div class="p-4 mx-auto max-w-screen-md">
       <a href="/">
@@ -38,7 +38,7 @@ export default function Home(props) {
         Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
         file, and refresh.
       </p>
-      <PokerGame cards={cards} />
+      <PokerGame cards={cards} deck_id={deck_id} />
       <pre>{JSON.stringify( props, null, 2 )}</pre>
     </div>
   );

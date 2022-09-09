@@ -2,7 +2,7 @@ import { useState } from "preact/hooks";
 import { apply, tw } from "twind";
 import { aspectRatio } from "@/utils/aspect-ratio.ts";
 
-export const Card = ({ card, idx, hold }) => {
+export const Card = ({ card, idx, hold, active = false }) => {
   // const btn = apply`inline-block bg-gray-500 text-base`;
   const INDEX = idx + 1;
   const card_base_style =
@@ -36,40 +36,32 @@ export const Card = ({ card, idx, hold }) => {
         }`}
         onClick={handleClick}
       >
-        <div
-          class="flex justify-center items-center text-xl font-bold"
-        >
+        <div class="flex justify-center items-center text-xl font-bold">
           {suit} {val}
         </div>
       </div>
-      <div class="flex">
-        <input
-          type="checkbox"
-          id={`hold_${INDEX}`}
-          class="peer hidden"
-          name={`hold_${INDEX}`}
-          checked={s_hold}
-        />
-        {s_hold
-          ? (
-            <label
-              for={`hold_${INDEX}`}
-              class={tw`${button_style} bg-blue-700`}
-              onClick={handleClick}
-            >
-              Hold
-            </label>
-          )
-          : (
-            <label
-              for={`hold_${INDEX}`}
-              class={tw`${button_style}`}
-              onClick={handleClick}
-            >
-              Hold
-            </label>
-          )}
-      </div>
+      {active
+        ? (
+          <div class="flex">
+            <input
+              type="checkbox"
+              id={`hold_${INDEX}`}
+              class="peer hidden"
+              name={`hold_${INDEX}`}
+              checked={s_hold}
+            />
+            {
+              <label
+                for={`hold_${INDEX}`}
+                class={tw`${button_style} ${s_hold ? "bg-blue-700" : ""}`}
+                onClick={handleClick}
+              >
+                Hold
+              </label>
+            }
+          </div>
+        )
+        : <></>}
     </div>
   );
 };
