@@ -2,9 +2,8 @@ import { SUITS, VALUES } from "./deck.js";
 
 // Jacks or Better Video Poker Scoring
 const getHandSuitsValuesSorted = (input_cards) => {
-  let hand_values;
-  hand_values = [];
-  const hand_suits = input_cards.map(function (card, i) {
+  const hand_values = [];
+  const hand_suits = input_cards.map((card, _i) => {
     hand_values.push(card.split("")[1]);
     return card.split("")[0];
   });
@@ -30,17 +29,16 @@ export const STRAIGHTS_LIST = [
 
 export const score = (hand_cards = [], bet = 5) => {
   const { hand_suits, hand_values } = getHandSuitsValuesSorted(hand_cards);
-  let royal, straight, flush, pair1, pair2, triple, quad, jacksorbetter;
   // bet = bet || 5
   // console.log(hand_suits, hand_values)
-  royal = false;
-  straight = false;
-  flush = false;
-  pair1 = false;
-  pair2 = false;
-  triple = false;
-  quad = false;
-  jacksorbetter = false;
+  let royal = false;
+  let straight = false;
+  let flush = false;
+  let pair1 = false;
+  let pair2 = false;
+  let triple = false;
+  let quad = false;
+  let jacksorbetter = false;
   if (JSON.stringify(hand_values) === JSON.stringify(ROYAL_STRAIGHT)) {
     royal = true;
   }
