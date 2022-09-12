@@ -10,7 +10,7 @@ export const SUITS = ["♦", "♣", "♥", "♠"],
   },
   // http://bost.ocks.org/mike/shuffle/
   shuffle = (array) => {
-    var counter = array.length,
+    let counter = array.length,
       temp,
       index;
     while (counter > 0) {

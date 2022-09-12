@@ -1,4 +1,4 @@
-import PokerPlayer from "@/islands/PokerPlayer.tsx";
+import PokerPlayer from "@/islands/PokerPlayer.jsx";
 
 export default function Home() {
   return (
@@ -9,8 +9,7 @@ export default function Home() {
         alt="the fresh logo: a sliced lemon dripping with juice"
       />
       <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Welcome. This little thing just plays some video poker.
       </p>
       <PokerPlayer count={3} />
     </div>

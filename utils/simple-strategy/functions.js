@@ -1,8 +1,11 @@
-import { SUITS, VALUES } from "../deck.js";
+import { SUITS, VALUES } from "@/utils/deck.js";
 
-import { ROYAL_STRAIGHT } from "../poker.js";
+import { ROYAL_STRAIGHT } from "@/utils/poker.js";
 
-import { ALL_STRAIGHTS, ONLY_HIGH_CARDS } from "./constants.js";
+import {
+  ALL_STRAIGHTS,
+  ONLY_HIGH_CARDS,
+} from "@/utils/simple-strategy/constants.js";
 
 // Not Exported
 

@@ -1,7 +1,5 @@
-// const Poker = require("../poker");
-
-import { VALUES } from "../deck.js";
-import { ROYAL_STRAIGHT, STRAIGHTS_LIST } from "../poker.js";
+import { VALUES } from "@/utils/deck.js";
+import { ROYAL_STRAIGHT, STRAIGHTS_LIST } from "@/utils/poker.js";
 
 export const STRATEGY_RULES = [
   { number: 0, rule: "Is Filler" },

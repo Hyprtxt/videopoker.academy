@@ -11,12 +11,9 @@ import * as $4 from "./routes/draw.jsx";
 import * as $5 from "./routes/index.jsx";
 import * as $6 from "./routes/play.jsx";
 import * as $7 from "./routes/player.tsx";
-import * as $8 from "./routes/signout.jsx";
 import * as $$0 from "./islands/Card.jsx";
-import * as $$1 from "./islands/Counter.tsx";
-import * as $$2 from "./islands/Debug.jsx";
-import * as $$3 from "./islands/PokerGame.jsx";
-import * as $$4 from "./islands/PokerPlayer.tsx";
+import * as $$1 from "./islands/Debug.jsx";
+import * as $$2 from "./islands/PokerPlayer.jsx";
 
 const manifest = {
   routes: {
@@ -28,14 +25,11 @@ const manifest = {
     "./routes/index.jsx": $5,
     "./routes/play.jsx": $6,
     "./routes/player.tsx": $7,
-    "./routes/signout.jsx": $8,
   },
   islands: {
     "./islands/Card.jsx": $$0,
-    "./islands/Counter.tsx": $$1,
-    "./islands/Debug.jsx": $$2,
-    "./islands/PokerGame.jsx": $$3,
-    "./islands/PokerPlayer.tsx": $$4,
+    "./islands/Debug.jsx": $$1,
+    "./islands/PokerPlayer.jsx": $$2,
   },
   baseUrl: import.meta.url,
   config,

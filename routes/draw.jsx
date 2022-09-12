@@ -1,7 +1,7 @@
 import { Layout, PokerGame } from "@/routes/index.jsx";
 
-import { simpleStrategy } from "@/static/simple-strategy/index.js";
-import { score } from "@/static/poker.js";
+import { simpleStrategy } from "@/utils/simple-strategy/mod.js";
+import { score } from "@/utils/poker.js";
 
 export const handler = {
   // GET: (_req, ctx) => {

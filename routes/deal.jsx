@@ -1,5 +1,5 @@
 import { Layout, PokerGame } from "@/routes/index.jsx";
-import { getNewCards } from "@/static/deck.js";
+import { getNewCards } from "@/utils/deck.js";
 
 export const handler = {
   GET: (req, ctx) => {

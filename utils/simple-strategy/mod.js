@@ -1,13 +1,13 @@
 // deno-lint-ignore-file no-case-declarations
-import { score } from "../poker.js";
+import { score } from "@/utils/poker.js";
 
-import { VALUES } from "../deck.js";
+import { VALUES } from "@/utils/deck.js";
 
 import {
   HIGH_CARDS_ORDER,
   OUTSIDE_STRAIGHTS,
   STRATEGY_RULES,
-} from "./constants.js";
+} from "@/utils/simple-strategy/constants.js";
 
 import {
   cardSuit,
@@ -22,7 +22,7 @@ import {
   getRoyalFlushCards,
   getStraightOutlier,
   getSuitCards,
-} from "./functions.js";
+} from "@/utils/simple-strategy/functions.js";
 
 const rule = (rule_number, INPUT_HAND) => {
   const getHoldEvents = {

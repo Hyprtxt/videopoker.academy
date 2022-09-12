@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { tw } from "twind";
-import { getNewCards } from "../static/deck.js";
-import { score } from "../static/poker.js";
-import { simpleStrategy } from "../static/simple-strategy/index.js";
+import { getNewCards } from "@/utils/deck.js";
+import { score } from "@/utils/poker.js";
+import { simpleStrategy } from "@/utils/simple-strategy/mod.js";
 
 const game = () => {
   const deck = getNewCards();
