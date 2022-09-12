@@ -50,7 +50,7 @@ export default function Home({ data }) {
     <Layout data={data}>
       <div class="p-4 mx-auto max-w-screen-md">
         <p class="my-5">
-          Welcome! This site aims to help beginners become better at Video Poker
+          Welcome! This site aims to help beginners become better video poker
           players. It's a video poker machine with special rules. It evaluates
           your ability to follow the strategy outlined below.
         </p>
@@ -61,7 +61,7 @@ export default function Home({ data }) {
           class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
           href="/deal"
         >
-          VideoPoker Academy
+          Video Poker Academy
         </a>
 
         {
@@ -238,7 +238,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
               ))}
             </div>
             <p class="my-6">
-              {`Optimal Strategy: Rule #${result.strategy.rule_number}: ${result.strategy.rule}`}
+              {`Simple Strategy: Rule #${result.strategy.rule_number}: ${result.strategy.rule}`}
             </p>
             <div class="flex gap-2 w-full grid grid-cols-5">
               {result.hand.map((card, idx) => (
