@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-case-declarations
 import { score } from "../poker.js";
 
 import { VALUES } from "../deck.js";
@@ -47,7 +48,7 @@ const rule = (rule_number, INPUT_HAND) => {
       const dupe_vals = [...map.entries()]
         .filter((entry) => entry[1] > 1)
         .map((entry) => entry[0]);
-      return INPUT_HAND.map((card, index) => {
+      return INPUT_HAND.map((card, _index) => {
         return dupe_vals.filter(
           (dupe_card_value) => dupe_card_value === cardValue(card),
         ).length;
@@ -75,7 +76,6 @@ const rule = (rule_number, INPUT_HAND) => {
             strategy: getHoldEvents.all(),
             rule: STRATEGY_RULES[1].rule,
           };
-          break;
         default:
           break;
       }
@@ -273,7 +273,6 @@ const rule = (rule_number, INPUT_HAND) => {
         strategy: [],
         rule: STRATEGY_RULES[16].rule,
       };
-      break;
   }
   return false;
 };
