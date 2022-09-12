@@ -3,9 +3,11 @@ import { getNewCards } from "@/static/deck.js";
 
 export const handler = {
   GET: (req, ctx) => {
-    const deck = getNewCards();
+    // const deck = getNewCards();
+    const deck = ["♣5", "♠Q", "♦J", "♠4", "♥K", "♣5", "♠Q", "♦J", "♠4", "♥K"];
     const deck_id = crypto.randomUUID();
     const cards = [...deck].splice(0, 5);
+    // const cards = ["♣5", "♠Q", "♦J", "♠4", "♥K"];
     ctx.store.set(`deck-${deck_id}`, JSON.stringify({ deck }));
     ctx.store.expire(`deck-${deck_id}`, 5 * 60);
     return ctx.render({ ...ctx.state, cards, deck_id });

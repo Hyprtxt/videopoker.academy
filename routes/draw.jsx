@@ -10,7 +10,7 @@ export const handler = {
   // },
   POST: async (req, ctx) => {
     const data = await req.formData();
-    // console.log(data);
+    console.log(data);
     // const deck = getNewCards();
     // const deck_id = crypto.randomUUID();
     // const cards = deck.splice(0, 5);
@@ -31,6 +31,7 @@ export const handler = {
       const next = [...redis_data_parsed.deck].splice(5, 5);
       const cards = holds.map((v, i) => v ? hand[i] : next[i]);
       const strategy = simpleStrategy(hand);
+      console.log(user_strategy, strategy.strategy);
       const winner =
         JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
           ? true
