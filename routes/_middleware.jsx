@@ -3,7 +3,7 @@ import { blue, cyan, green, magenta, red, yellow } from "$std/fmt/colors.ts";
 import { getCookies, setCookie } from "$std/http/cookie.ts";
 import * as redis from "redis";
 import {
-  API_URL,
+  // API_URL,
   BASE_URL,
   DENO_ENV,
   REDIS_HOST,
@@ -83,7 +83,7 @@ export async function handler(req, ctx) {
     withSession.includes(pathname) ||
     pathname.startsWith("/api/")
   ) {
-    ctx.API_URL = API_URL;
+    // ctx.API_URL = API_URL;
     ctx.BASE_URL = BASE_URL;
     ctx.DENO_ENV = DENO_ENV;
     ctx.store = store;
