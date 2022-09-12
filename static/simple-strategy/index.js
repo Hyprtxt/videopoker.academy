@@ -28,9 +28,12 @@ const rule = (rule_number, INPUT_HAND) => {
     cards: (cardsArray) =>
       cardsArray
         .map((hold_card) => `HOLD_${INPUT_HAND.indexOf(hold_card) + 1}`)
+        // Rule 13 ouputs out of order
+        // Example ["♣5", "♠Q", "♦J", "♠4", "♥K", "♣5", "♠Q", "♦J", "♠4", "♥K"];
+        // Rule 14 also out of order sometimes
+        // const deck = ["♥6", "♦K", "♦4", "♦T", "♠9", "♥6", "♦K", "♦4", "♦T", "♠9"];
+        // This sort() patches the issue:
         .sort((a, b) => a[5] - b[5]),
-    // Rule 13 ouputs out of order
-    // Example ["♣5", "♠Q", "♦J", "♠4", "♥K", "♣5", "♠Q", "♦J", "♠4", "♥K"];
     suit: (holdSuit) =>
       INPUT_HAND.map((card, index) =>
         cardSuit(card) === holdSuit ? `HOLD_${index + 1}` : ""
