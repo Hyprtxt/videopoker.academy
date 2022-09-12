@@ -1,4 +1,5 @@
-import { PokerGame } from "@/routes/index.jsx";
+import { Layout, PokerGame } from "@/routes/index.jsx";
+
 import { simpleStrategy } from "@/static/simple-strategy/index.js";
 import { score } from "@/static/poker.js";
 
@@ -9,7 +10,7 @@ export const handler = {
   // },
   POST: async (req, ctx) => {
     const data = await req.formData();
-    console.log(data);
+    // console.log(data);
     // const deck = getNewCards();
     // const deck_id = crypto.randomUUID();
     // const cards = deck.splice(0, 5);
@@ -29,12 +30,17 @@ export const handler = {
       const hand = [...redis_data_parsed.deck].splice(0, 5);
       const next = [...redis_data_parsed.deck].splice(5, 5);
       const cards = holds.map((v, i) => v ? hand[i] : next[i]);
-      const result = score(cards);
       const strategy = simpleStrategy(hand);
       const winner =
         JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
           ? true
           : false;
+      const result = Object.assign(score(cards), {
+        hand,
+        strategy,
+        user_strategy,
+        winner,
+      });
       // console.log(redis_data_parsed.deck.length, "deck length");
       if (winner) {
         if (ctx.state.streak) {
@@ -43,6 +49,7 @@ export const handler = {
           ctx.state.streak = 1;
         }
       } else {
+        ctx.state.final = parseInt(ctx.state.streak);
         ctx.state.streak = 0;
       }
       ctx.store.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }));
@@ -52,9 +59,6 @@ export const handler = {
         cards,
         deck_id,
         result,
-        strategy,
-        user_strategy,
-        winner,
       });
     }
     return ctx.renderNotFound();
@@ -62,22 +66,43 @@ export const handler = {
 };
 
 export default function Home({ data }) {
-  const { cards, winner } = data;
+  const { cards, result, streak, final } = data;
   return (
-    <div class="p-4 mx-auto max-w-screen-md">
-      <a href="/">
-        <img
-          src="/logo.svg"
-          height="100px"
-          alt="the fresh logo: a sliced lemon dripping with juice"
-        />
-      </a>
-      <p class="my-6">
+    <Layout data={data}>
+      <div class="p-4 mx-auto max-w-screen-md">
+        {
+          /* <p class="my-6">
         Good job. That's a hand of video poker.
-      </p>
-      <PokerGame cards={cards} result={[]} winner={winner} />
-      {winner ? <a href="/deal">Play More</a> : <></>}
-      <pre>{JSON.stringify( data, null, 2 )}</pre>
-    </div>
+      </p> */
+        }
+        {result.winner
+          ? (
+            <p class="my-6">
+              Perfect Streak: {streak}
+            </p>
+          )
+          : <></>}
+        <PokerGame cards={cards} result={result} />
+        {!result.winner
+          ? (
+            <>
+              <p class="my-6">
+                Oops! Final Score: {final} hands in a row.
+              </p>
+              <p class="my-5">
+                <a
+                  class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+                  href="/"
+                >
+                  Go back to the rules
+                </a>
+              </p>
+            </>
+          )
+          : <></>}
+        {/* {result.winner ? <a href="/deal">Play More</a> : <></>} */}
+        {/* <pre>{JSON.stringify( data, null, 2 )}</pre> */}
+      </div>
+    </Layout>
   );
 }

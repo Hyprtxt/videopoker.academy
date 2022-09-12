@@ -7,28 +7,31 @@ export const Card = ({ card, idx, hold, active = false }) => {
   const INDEX = idx + 1;
   const card_base_style =
     apply`mb-4 rounded overflow-hidden shadow-lg border-4`;
-  const card_back_style = apply`${card_base_style} border-blue-600 `;
-  const card_front_style = apply`${card_base_style} bg-white border-blue-200`;
-  const card_hold_style = apply`${card_base_style} bg-white border-blue-400`;
+  const card_back_style = apply`${card_base_style} border-sky-600 `;
+  const card_front_style = apply`${card_base_style} bg-white border-sky-200`;
+  const card_hold_style = apply`${card_base_style} bg-white border-sky-400`;
   const button_style =
-    apply`text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full`;
+    apply`text-center cursor-pointer bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded w-full`;
   // console.log(card);
   if (!card) {
     return (
       <div
-        class={tw`${card_back_style} ${aspectRatio("2.5/3.5")} bg-blue-500`}
+        class={tw`${card_back_style} ${aspectRatio("2.5/3.5")} bg-sky-500`}
       />
     );
   }
   const [suit, val] = card;
+  // console.log(suit, val, card, "yep");
   if (!active) {
     return (
       <div class="mb-4 w-full">
         <div
-          class={tw`${card_front_style} ${aspectRatio("2.5/3.5")}`}
+          class={tw`${hold ? card_hold_style : card_front_style} ${
+            aspectRatio("2.5/3.5")
+          }`}
         >
           <div
-            class={`flex justify-center items-center text-xl font-bold ${
+            class={`flex justify-center text-xl sm:text-3xl md:text-4xl items-center md:text-5xl font-bold ${
               suit === "♥" || suit === "♦" ? "text-red-500" : ""
             }`}
           >
@@ -54,7 +57,7 @@ export const Card = ({ card, idx, hold, active = false }) => {
         onClick={handleClick}
       >
         <div
-          class={`flex justify-center items-center text-xl font-bold ${
+          class={`flex justify-center text-xl sm:text-3xl md:text-4xl items-center font-bold ${
             suit === "♥" || suit === "♦" ? "text-red-500" : ""
           }`}
         >
@@ -74,7 +77,7 @@ export const Card = ({ card, idx, hold, active = false }) => {
             {
               <label
                 for={`hold_${INDEX}`}
-                class={tw`${button_style} ${s_hold ? "bg-blue-700" : ""}`}
+                class={tw`${button_style} ${s_hold ? "bg-sky-700" : ""}`}
                 onClick={handleClick}
               >
                 Hold

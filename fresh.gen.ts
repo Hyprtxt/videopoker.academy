@@ -9,8 +9,9 @@ import * as $2 from "./routes/api/joke.ts";
 import * as $3 from "./routes/deal.jsx";
 import * as $4 from "./routes/draw.jsx";
 import * as $5 from "./routes/index.jsx";
-import * as $6 from "./routes/play.tsx";
-import * as $7 from "./routes/signout.jsx";
+import * as $6 from "./routes/play.jsx";
+import * as $7 from "./routes/player.tsx";
+import * as $8 from "./routes/signout.jsx";
 import * as $$0 from "./islands/Card.jsx";
 import * as $$1 from "./islands/Counter.tsx";
 import * as $$2 from "./islands/Debug.jsx";
@@ -25,8 +26,9 @@ const manifest = {
     "./routes/deal.jsx": $3,
     "./routes/draw.jsx": $4,
     "./routes/index.jsx": $5,
-    "./routes/play.tsx": $6,
-    "./routes/signout.jsx": $7,
+    "./routes/play.jsx": $6,
+    "./routes/player.tsx": $7,
+    "./routes/signout.jsx": $8,
   },
   islands: {
     "./islands/Card.jsx": $$0,

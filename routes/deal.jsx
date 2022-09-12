@@ -1,4 +1,4 @@
-import { PokerGame } from "@/routes/index.jsx";
+import { Layout, PokerGame } from "@/routes/index.jsx";
 import { getNewCards } from "@/static/deck.js";
 
 export const handler = {
@@ -24,21 +24,24 @@ export const handler = {
 
 export default function Home(props) {
   const { data } = props;
-  const { cards, deck_id } = data;
+  const { cards, deck_id, streak } = data;
   return (
-    <div class="p-4 mx-auto max-w-screen-md">
-      <a href="/">
-        <img
-          src="/logo.svg"
-          height="100px"
-          alt="the fresh logo: a sliced lemon dripping with juice"
-        />
-      </a>
-      <p class="my-6">
-        Good, now use the hold buttons to keep the good cards.
-      </p>
-      <PokerGame cards={cards} deck_id={deck_id} />
-      <pre>{JSON.stringify( props, null, 2 )}</pre>
-    </div>
+    <Layout data={data}>
+      <div class="p-4 mx-auto max-w-screen-md">
+        {streak === 0
+          ? (
+            <p class="my-6">
+              Welcome! Now use the hold buttons to keep the correct cards.
+            </p>
+          )
+          : (
+            <p class="my-6">
+              Now how many in a row can you do before you make a mistake?
+            </p>
+          )}
+        <PokerGame cards={cards} deck_id={deck_id} />
+        {/* <pre>{JSON.stringify( props, null, 2 )}</pre> */}
+      </div>
+    </Layout>
   );
 }
