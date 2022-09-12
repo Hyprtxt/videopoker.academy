@@ -42,14 +42,14 @@ export const score = (hand_cards = [], bet = 5) => {
   if (JSON.stringify(hand_values) === JSON.stringify(ROYAL_STRAIGHT)) {
     royal = true;
   }
-  STRAIGHTS_LIST.forEach((v, i) => {
+  STRAIGHTS_LIST.forEach((v, _i) => {
     if (JSON.stringify(hand_values) === JSON.stringify(v)) straight = true;
   });
   // Values Count
   VALUES.forEach((v, i) => {
     let count;
     count = 0;
-    hand_values.forEach((val, idx) => {
+    hand_values.forEach((val, _idx) => {
       if (val === v) count++;
     });
     if (count === 2) {
@@ -61,10 +61,10 @@ export const score = (hand_cards = [], bet = 5) => {
     if (count === 4) quad = true;
   });
   // Suits Count
-  SUITS.forEach((v, i) => {
+  SUITS.forEach((v, _i) => {
     let count;
     count = 0;
-    hand_suits.forEach((val, idx) => {
+    hand_suits.forEach((val, _idx) => {
       if (val === v) count++;
     });
     if (count === 5) flush = true;

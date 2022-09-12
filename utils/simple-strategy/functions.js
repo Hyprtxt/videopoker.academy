@@ -21,14 +21,13 @@ const parse = (string) => {
 };
 
 const copyAndRemoveSingleCard = (array, index) => {
-  let result = [...array];
+  const result = [...array];
   result.splice(index, 1);
   return result;
 };
 
 const handsWithFourCards = (hand) => {
-  let hands;
-  hands = [];
+  const hands = [];
   hands.push(copyAndRemoveSingleCard(hand, 0));
   hands.push(copyAndRemoveSingleCard(hand, 1));
   hands.push(copyAndRemoveSingleCard(hand, 2));
@@ -38,13 +37,8 @@ const handsWithFourCards = (hand) => {
   return hands;
 };
 
-const getTriplets = (things) => {
-  var triplets;
-
-  if (things == null) {
-    things = [];
-  }
-  triplets = [];
+const getTriplets = (things = []) => {
+  const triplets = [];
   if (things.length !== 5) {
     return false;
   } else {
@@ -59,9 +53,8 @@ const getTriplets = (things) => {
       VALUES[7],
       VALUES[8],
       VALUES[9],
-    ].forEach(function (index) {
-      var clone;
-      clone = things.slice(0);
+    ].forEach((index) => {
+      const clone = things.slice(0);
       switch (index) {
         case VALUES[0]:
           clone.splice(0, 2);
@@ -110,14 +103,11 @@ const getTriplets = (things) => {
 };
 
 const getStraightTriplets = () => {
-  var straightTriplets;
-  straightTriplets = [];
-  ALL_STRAIGHTS.forEach(function (straight) {
-    var singleStraightTriplets;
-    singleStraightTriplets = getTriplets(straight);
-    singleStraightTriplets.forEach(function (triplet) {
-      var tripletString;
-      tripletString = JSON.stringify(triplet);
+  const straightTriplets = [];
+  ALL_STRAIGHTS.forEach((straight) => {
+    const singleStraightTriplets = getTriplets(straight);
+    singleStraightTriplets.forEach((triplet) => {
+      const tripletString = JSON.stringify(triplet);
       straightTriplets.push(tripletString);
     });
   });
@@ -132,38 +122,32 @@ const getCardValuesOrdered = (hand) =>
 // Exported
 
 export const fourOfStraights = () => {
-  var result;
-  result = [];
-  ALL_STRAIGHTS.forEach(function (arr) {
-    var copy;
-    copy = arr.slice(0);
+  const result = [];
+  ALL_STRAIGHTS.forEach((arr) => {
+    const copy = arr.slice(0);
     copy.splice(0, 1);
     result.push(copy);
   });
-  ALL_STRAIGHTS.forEach(function (arr) {
-    var copy;
-    copy = arr.slice(0);
+  ALL_STRAIGHTS.forEach((arr) => {
+    const copy = arr.slice(0);
     copy.splice(1, 1);
     result.push(copy);
     return copy;
   });
-  ALL_STRAIGHTS.forEach(function (arr) {
-    var copy;
-    copy = arr.slice(0);
+  ALL_STRAIGHTS.forEach((arr) => {
+    const copy = arr.slice(0);
     copy.splice(2, 1);
     result.push(copy);
     return copy;
   });
-  ALL_STRAIGHTS.forEach(function (arr) {
-    var copy;
-    copy = arr.slice(0);
+  ALL_STRAIGHTS.forEach((arr) => {
+    const copy = arr.slice(0);
     copy.splice(3, 1);
     result.push(copy);
     return copy;
   });
-  ALL_STRAIGHTS.forEach(function (arr) {
-    var copy;
-    copy = arr.slice(0);
+  ALL_STRAIGHTS.forEach((arr) => {
+    const copy = arr.slice(0);
     copy.splice(4, 1);
     result.push(copy);
     return copy;
@@ -172,7 +156,7 @@ export const fourOfStraights = () => {
 };
 
 export const getSuitCards = (hand, suit) =>
-  hand.filter(function (card) {
+  hand.filter((card) => {
     if (cardSuit(card) === suit) {
       return true;
     }
@@ -183,12 +167,11 @@ export const cardSuit = (card) => card[0];
 export const cardValue = (card) => card[1];
 
 export const getHighCards = (cards) => {
-  let result;
-  result = {
+  const result = {
     cards: [],
   };
-  cards.forEach(function (card) {
-    ONLY_HIGH_CARDS.forEach(function (val) {
+  cards.forEach((card) => {
+    ONLY_HIGH_CARDS.forEach((val) => {
       if (cardValue(card) === val) {
         result.cards.push(card);
       }
@@ -199,14 +182,13 @@ export const getHighCards = (cards) => {
 };
 
 export const getRoyalFlushCards = (royal, flush) => {
-  var royalFlush;
-  royalFlush = {
+  const royalFlush = {
     cards: [],
     suit: flush.suit,
   };
   if (flush.cards.length !== 0) {
-    royal.cards.forEach(function (royalCard) {
-      flush.cards.forEach(function (flushCard) {
+    royal.cards.forEach((royalCard) => {
+      flush.cards.forEach((flushCard) => {
         if (royalCard === flushCard) {
           royalFlush.cards.push(royalCard);
         }
@@ -217,12 +199,11 @@ export const getRoyalFlushCards = (royal, flush) => {
 };
 
 export const getRoyalCards = (hand) => {
-  let royal;
-  royal = {
+  const royal = {
     cards: [],
   };
-  hand.forEach(function (card) {
-    ROYAL_STRAIGHT.forEach(function (val) {
+  hand.forEach((card) => {
+    ROYAL_STRAIGHT.forEach((val) => {
       if (cardValue(card) === val) {
         royal.cards.push(card);
       }
@@ -232,16 +213,14 @@ export const getRoyalCards = (hand) => {
 };
 
 export const getFlushCards = (hand) => {
-  var flush;
-  flush = {
+  const flush = {
     cards: [],
     suit: "",
   };
-  SUITS.forEach(function (suit) {
-    let cards, count;
-    count = 0;
-    cards = [];
-    hand.forEach(function (card) {
+  SUITS.forEach((suit) => {
+    let count = 0;
+    const cards = [];
+    hand.forEach((card) => {
       if (cardSuit(card) === suit) {
         count++;
         cards.push(card);
@@ -256,14 +235,13 @@ export const getFlushCards = (hand) => {
 };
 
 export const getStraightOutlier = (hand, straights = []) => {
-  let result;
-  result = {
+  const result = {
     haveStraight: false,
     outlierIndex: null,
     outlierCard: "",
     // match: straights,
   };
-  straights.forEach(function (partialStraight, index) {
+  straights.forEach((partialStraight, _index) => {
     const partialStraightString = JSON.stringify(partialStraight);
     handsWithFourCards(hand).forEach((partialHand, idx) => {
       const partialHandString = JSON.stringify(
@@ -281,13 +259,12 @@ export const getStraightOutlier = (hand, straights = []) => {
 };
 
 export const getFlushOutlier = (hand) => {
-  var flush, outlierIndex;
-  flush = getFlushCards(hand);
-  outlierIndex = -1;
+  const flush = getFlushCards(hand);
+  let outlierIndex = -1;
   if (flush.cards.length !== 4) {
     return false;
   } else {
-    hand.forEach(function (card, idx) {
+    hand.forEach((card, idx) => {
       if (cardSuit(card) !== flush.suit) {
         outlierIndex = idx;
       }
@@ -298,22 +275,22 @@ export const getFlushOutlier = (hand) => {
 
 export const find3toStraightFlush = (hand) => {
   // console.log("find3 hand", hand)
-  var flush, result, triplets;
-  result = {};
-  result.foundIt = false;
-  result.suit = "";
-  flush = getFlushCards(hand);
-  triplets = getTriplets(hand);
+  const result = {
+    foundIt: false,
+    suit: "",
+  };
+  const flush = getFlushCards(hand);
+  const triplets = getTriplets(hand);
   // console.log(triplets, flush)
   if (flush.cards.length > 2) {
-    triplets.forEach(function (hand_triplet, idx) {
-      var handTripletString;
-      handTripletString = JSON.stringify(getCardValuesOrdered(hand_triplet));
-      getStraightTriplets().forEach(function (straight_triplet) {
-        var flushCards, straightTripletString;
-        straightTripletString = JSON.stringify(straight_triplet);
+    triplets.forEach((hand_triplet, _idx) => {
+      const handTripletString = JSON.stringify(
+        getCardValuesOrdered(hand_triplet),
+      );
+      getStraightTriplets().forEach((straight_triplet) => {
+        const straightTripletString = JSON.stringify(straight_triplet);
         if (straightTripletString === handTripletString) {
-          flushCards = getFlushCards(hand_triplet);
+          const flushCards = getFlushCards(hand_triplet);
           if (flushCards.cards.length === 3) {
             result.suit = flushCards.suit;
             result.foundIt = true;
@@ -326,16 +303,15 @@ export const find3toStraightFlush = (hand) => {
 };
 
 export const get2SuitedHighCards = (hand) => {
-  var high, result;
-  result = {};
-  result.success = false;
-  result.cards = [];
-  high = getHighCards(hand);
+  const result = {
+    success: false,
+    cards: [],
+  };
+  const high = getHighCards(hand);
   if (high.cards.length > 1) {
-    SUITS.forEach(function (idx) {
-      var highCards, suitCards;
-      suitCards = getSuitCards(hand, idx);
-      highCards = getHighCards(suitCards);
+    SUITS.forEach((idx) => {
+      const suitCards = getSuitCards(hand, idx);
+      const highCards = getHighCards(suitCards);
       if (highCards.cards.length > 1) {
         result.cards = highCards.cards;
         result.success = true;
