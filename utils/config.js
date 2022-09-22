@@ -12,6 +12,7 @@ const ENV = cleanEnv(RAW_ENV, {
   REDIS_PASS: str(),
   REDIS_HOST: host(),
   REDIS_PORT: port(),
+  PORT: port(),
 });
 
 export const {
@@ -22,6 +23,7 @@ export const {
   REDIS_HOST,
   REDIS_PASS,
   REDIS_PORT,
+  PORT,
 } = ENV;
 
 export default ENV;
