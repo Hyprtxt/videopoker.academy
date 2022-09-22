@@ -36,6 +36,12 @@ export const Layout = ({ children, data }) => {
   return (
     <>
       <Head>
+        <title>Video Poker Academy</title>
+        <meta
+          name="description"
+          content="Video Poker Academy is a fun way to improve your Video Poker skills."
+        >
+        </meta>
         {DENO_ENV === "production"
           ? (
             <>
