@@ -4,10 +4,9 @@ import { simpleStrategy } from "@/utils/simple-strategy/mod.js";
 import { score } from "@/utils/poker.js";
 
 export const handler = {
-  // GET: (_req, ctx) => {
-  //   // return ctx.renderNotFound();
-  //   return ctx.render({ ...ctx.state });
-  // },
+  GET: (_req, ctx) => {
+    return ctx.renderNotFound();
+  },
   POST: async (req, ctx) => {
     const data = await req.formData();
     console.log(data);
