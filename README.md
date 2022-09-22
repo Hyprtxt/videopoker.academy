@@ -25,3 +25,13 @@ deno task start
 ```
 
 This will watch the project directory and restart as necessary.
+
+### Secrets for GitHub Actions
+
+Use this command to get the secret contents
+
+```
+base64 .env.github | pbcopy
+```
+
+secret name should be `ENV_GITHUB_ACTIONS`
