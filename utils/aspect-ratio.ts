@@ -36,7 +36,7 @@ const aspectRatio$ = (
     ? apply`static pb-0 children:(static h-auto w-auto inset-auto)`
     : ratio.w === "ratio"
     ? ""
-    : // {
+    // {
     //     position: 'static',
     //     paddingBottom: '0',
     //     '&>*': {
@@ -49,35 +49,35 @@ const aspectRatio$ = (
     //       left: 'auto',
     //     },
     //   }
-      {
-        "--tw-aspect-w": ratio.w &&
-          theme("aspectRatio", "" + ratio.w, "" + ratio.w),
-        "--tw-aspect-h": ratio.h &&
-          theme("aspectRatio", "" + ratio.h, "" + ratio.h),
-        // Add additional aspect-ratio class only once
-        _: ratio.h ? tag("aspect-ratio") : undefined,
-        ":global": {
-          [
-            "." +
-            tag(
-              "aspect-ratio",
-            )
-          ]: apply`relative ${aspectRatioCalc} children:(absolute h-full w-full inset-0)`,
-          // {
-          //   position: 'relative',
-          //   paddingBottom: `calc(var(--tw-aspect-h)/var(--tw-aspect-w)*100%)`,
-          //   '&>*': {
-          //     position: 'absolute',
-          //     height: '100%',
-          //     width: '100%',
-          //     top: '0',
-          //     right: '0',
-          //     bottom: '0',
-          //     left: '0',
-          //   },
-          // },
-        },
-      };
+    : {
+      "--tw-aspect-w": ratio.w &&
+        theme("aspectRatio", "" + ratio.w, "" + ratio.w),
+      "--tw-aspect-h": ratio.h &&
+        theme("aspectRatio", "" + ratio.h, "" + ratio.h),
+      // Add additional aspect-ratio class only once
+      _: ratio.h ? tag("aspect-ratio") : undefined,
+      ":global": {
+        [
+          "." +
+          tag(
+            "aspect-ratio",
+          )
+        ]: apply`relative ${aspectRatioCalc} children:(absolute h-full w-full inset-0)`,
+        // {
+        //   position: 'relative',
+        //   paddingBottom: `calc(var(--tw-aspect-h)/var(--tw-aspect-w)*100%)`,
+        //   '&>*': {
+        //     position: 'absolute',
+        //     height: '100%',
+        //     width: '100%',
+        //     top: '0',
+        //     right: '0',
+        //     bottom: '0',
+        //     left: '0',
+        //   },
+        // },
+      },
+    };
 
 export const aspectRatio = ((
   ratio: "none" | Ratio | string | number | string[],
