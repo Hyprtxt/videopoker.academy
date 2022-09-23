@@ -78,7 +78,7 @@ export default function Home({ data }) {
         {result.winner
           ? (
             <p class="my-6">
-              Perfect Streak: {streak}
+              Perfect Streak: <span id="score">{streak}</span>
             </p>
           )
           : <></>}

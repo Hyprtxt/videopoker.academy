@@ -31,7 +31,7 @@ export const Card = ({ card, idx, hold, active = false }) => {
           }`}
         >
           <div
-            class={`flex justify-center text-xl sm:text-3xl md:text-4xl items-center font-bold ${
+            class={`card-value flex justify-center text-xl sm:text-3xl md:text-4xl items-center font-bold ${
               suit === "♥" || suit === "♦" ? "text-red-500" : ""
             }`}
           >
@@ -57,7 +57,7 @@ export const Card = ({ card, idx, hold, active = false }) => {
         onClick={handleClick}
       >
         <div
-          class={`flex justify-center text-xl sm:text-3xl md:text-4xl items-center font-bold ${
+          class={`card-value flex justify-center text-xl sm:text-3xl md:text-4xl items-center font-bold ${
             suit === "♥" || suit === "♦" ? "text-red-500" : ""
           }`}
         >

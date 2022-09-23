@@ -286,10 +286,11 @@ export default function Home({ data }) {
 }
 
 export const PokerGame = ({ cards, result, deck_id }) => {
+  const cards_wrapper_classes = "flex gap-2 w-full grid grid-cols-5 hand";
   if (!cards) {
     return (
       <form action="/deal">
-        <div class="flex gap-2 w-full grid grid-cols-5">
+        <div class={cards_wrapper_classes}>
           <Card />
           <Card />
           <Card />
@@ -309,7 +310,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
       <form action="/draw" method="POST">
         {/* <input type="hidden" name="next" value={JSON.stringify(cards)} /> */}
         <input type="hidden" name="deck_id" value={deck_id} />
-        <div class="flex gap-2 w-full grid grid-cols-5">
+        <div class={cards_wrapper_classes}>
           {cards.map((card, idx) => (
             <Card card={card} idx={idx} active={true} />
           ))}
@@ -329,7 +330,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
         ? (
           <>
             <form action="/deal" method="GET">
-              <div class="flex gap-2 w-full grid grid-cols-5">
+              <div class={cards_wrapper_classes}>
                 {cards.map((card, idx) => (
                   <Card
                     card={card}
@@ -351,7 +352,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
         : (
           <>
             <p class="my-6">Your Strategy</p>
-            <div class="flex gap-2 w-full grid grid-cols-5">
+            <div class={cards_wrapper_classes}>
               {result.hand.map((card, idx) => (
                 <Card
                   card={card}
@@ -365,7 +366,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
             <p class="my-6">
               {`Simple Strategy: Rule #${result.strategy.rule_number}: ${result.strategy.rule}`}
             </p>
-            <div class="flex gap-2 w-full grid grid-cols-5">
+            <div class={cards_wrapper_classes}>
               {result.hand.map((card, idx) => (
                 <Card
                   card={card}
