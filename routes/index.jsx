@@ -2,6 +2,7 @@ import { apply } from "twind";
 import { asset, Head } from "$fresh/runtime.ts";
 import Card from "@/islands/Card.jsx";
 import Debug from "@/islands/Debug.jsx";
+import Keyboard from "@/islands/Keyboard.jsx";
 // import PokerGame from "../islands/PokerGame.jsx";
 import { DENO_ENV, GA_ID } from "@/utils/config.js";
 
@@ -180,15 +181,20 @@ export default function Home({ data }) {
           your ability to follow the strategy outlined below.
         </p>
         <p class="my-5">
+          You can use the numbers 1,2,3,4,5 on your keyboard to hold cards, and
+          enter will deal/draw/start a game depending on context.
+        </p>
+        <p class="my-5">
           Sounds great, lets play:
         </p>
-        <a
-          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
-          href="/deal"
-        >
-          Video Poker Academy
-        </a>
-
+        <Keyboard />
+        <form action="/deal">
+          <input
+            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
+            type="submit"
+            value="Video Poker Academy"
+          />
+        </form>
         {
           /* <div class="grid sm:grid-cols-2">
           <div class="my-5">

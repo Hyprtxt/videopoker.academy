@@ -1,5 +1,5 @@
 import { Layout, PokerGame } from "@/routes/index.jsx";
-
+import Keyboard from "@/islands/Keyboard.jsx";
 import { simpleStrategy } from "@/utils/simple-strategy/mod.js";
 import { score } from "@/utils/poker.js";
 
@@ -83,6 +83,7 @@ export default function Home({ data }) {
           )
           : <></>}
         <PokerGame cards={cards} result={result} />
+        <Keyboard />
         {!result.winner
           ? (
             <>
@@ -90,12 +91,13 @@ export default function Home({ data }) {
                 Oops! Final Score: {final} hands in a row.
               </p>
               <p class="my-5">
-                <a
-                  class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
-                  href="/"
-                >
-                  Go back to the rules
-                </a>
+                <form action="/">
+                  <input
+                    class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+                    type="submit"
+                    value="Go back to the rules"
+                  />
+                </form>
               </p>
             </>
           )

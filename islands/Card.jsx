@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { apply, tw } from "twind";
 import { aspectRatio } from "@/utils/aspect-ratio.ts";
 

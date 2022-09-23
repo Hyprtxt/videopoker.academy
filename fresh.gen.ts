@@ -12,7 +12,8 @@ import * as $5 from "./routes/index.jsx";
 import * as $6 from "./routes/player.jsx";
 import * as $$0 from "./islands/Card.jsx";
 import * as $$1 from "./islands/Debug.jsx";
-import * as $$2 from "./islands/PokerPlayer.jsx";
+import * as $$2 from "./islands/Keyboard.jsx";
+import * as $$3 from "./islands/PokerPlayer.jsx";
 
 const manifest = {
   routes: {
@@ -27,7 +28,8 @@ const manifest = {
   islands: {
     "./islands/Card.jsx": $$0,
     "./islands/Debug.jsx": $$1,
-    "./islands/PokerPlayer.jsx": $$2,
+    "./islands/Keyboard.jsx": $$2,
+    "./islands/PokerPlayer.jsx": $$3,
   },
   baseUrl: import.meta.url,
   config,

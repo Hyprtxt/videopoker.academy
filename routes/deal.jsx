@@ -1,5 +1,6 @@
 import { Layout, PokerGame } from "@/routes/index.jsx";
 import { getNewCards } from "@/utils/deck.js";
+import Keyboard from "@/islands/Keyboard.jsx";
 
 export const handler = {
   GET: (req, ctx) => {
@@ -40,6 +41,7 @@ export default function Home(props) {
             </p>
           )}
         <PokerGame cards={cards} deck_id={deck_id} />
+        <Keyboard />
         {/* <pre>{JSON.stringify( props, null, 2 )}</pre> */}
       </div>
     </Layout>

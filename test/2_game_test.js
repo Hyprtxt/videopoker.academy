@@ -2,9 +2,8 @@ import { assertEquals } from "$std/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "@/test/runner.js";
 import { BASE_URL } from "@/utils/config.js";
 import { simpleStrategy } from "@/utils/simple-strategy/mod.js";
-// import { score } from "@/utils/poker.js";
 
-const playGameOfPoker = async (page) => {
+const playGameOfPoker = async (page, done = false) => {
   const cards = await page.$$eval(".flex.justify-center", (elements) => {
     console.log(elements, elements.length);
     return elements.map((element) => element.textContent.replaceAll(" ", ""));
@@ -23,6 +22,10 @@ const playGameOfPoker = async (page) => {
   }, action);
   await page.click('[type="submit"]');
   await page.waitForNetworkIdle();
+  if (!done) {
+    await page.click('[type="submit"]');
+    await page.waitForNetworkIdle();
+  }
 };
 
 Deno.test(
@@ -36,36 +39,16 @@ Deno.test(
         });
         assertEquals(response.status(), 200);
         // await page.waitForTimeout(200);
-
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
         await playGameOfPoker(page);
-        await page.click('[type="submit"]');
-        await page.waitForNetworkIdle();
-        await playGameOfPoker(page);
-
+        await playGameOfPoker(page, true);
         // Assert that they scored 10
         const score = await page.evaluate(() => {
           const el = document.getElementById("score");
