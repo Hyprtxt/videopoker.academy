@@ -28,7 +28,7 @@ Deno.test(
 
     await t.step("The player page should work", async () => {
       const response = await page.goto(`${BASE_URL}/player`, {
-        waitUntil: "networkidle2",
+        waitUntil: "domcontentloaded",
       });
       assertEquals(response.status(), 200);
     });
