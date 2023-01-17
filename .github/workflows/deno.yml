@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
-        uses: denoland/setup-deno
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.28.3
       
