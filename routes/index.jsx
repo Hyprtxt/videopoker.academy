@@ -262,7 +262,7 @@ export default function Home({ data }) {
         <p class="my-5">
           <strong>Inside straight:</strong>{" "}
           A straight with a missing inside card, such as the cards 6,7,9,10. In
-          addition A,2,3,4 andJ,Q,K,A also count as inside straights because
+          addition A,2,3,4 and J,Q,K,A also count as inside straights because
           they are at an extreme end.
         </p>
         <h2 class="text-2xl my-5">Pay Table:</h2>
