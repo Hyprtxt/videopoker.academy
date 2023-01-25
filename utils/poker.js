@@ -1,4 +1,4 @@
-import { SUITS, VALUES } from "./deck.js";
+import { SUITS, VALUES } from "@/utils/deck.js";
 
 // Jacks or Better Video Poker Scoring
 const getHandSuitsValuesSorted = (input_cards) => {
