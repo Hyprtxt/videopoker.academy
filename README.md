@@ -2,8 +2,8 @@
 
 [![Made with Fresh](https://fresh.deno.dev/fresh-badge.svg)](https://fresh.deno.dev)
 
-This is an example project, it's released under the MIT license. Please feel free to
-take look around.
+This is an example project, it's released under the MIT license. Please feel
+free to take look around.
 
 ### Setup
 
