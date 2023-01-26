@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "run": "DENO_DEPLOYMENT_ID=$(git rev-parse --short HEAD) deno run -A main.ts"
+    "start": "deno run -A --watch=static/,routes/ --lock=deno.lock dev.ts",
+    "run": "DENO_DEPLOYMENT_ID=$(git rev-parse --short HEAD) deno run -A --lock=deno.lock main.ts"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
