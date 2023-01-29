@@ -178,8 +178,13 @@ export default function Home({ data }) {
         <p class="my-5">
           Welcome! This site aims to help beginners become better video poker
           players. It's a video poker machine with special rules. It evaluates
-          your ability to follow the strategy outlined below.
+          your ability to follow the strategy outlined by{" "}
+          <a href="https://wizardofodds.com/">Wizard of Odds</a> on{" "}
+          <a href="https://wizardofodds.com/games/video-poker/strategy/jacks-or-better/9-6/simple/">
+            this page
+          </a>
         </p>
+
         <p class="my-5">
           You can use the numbers 1,2,3,4,5 on your keyboard to hold cards, and
           enter will deal/draw/start a game depending on context.

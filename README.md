@@ -5,6 +5,10 @@
 This is an example project, it's released under the MIT license. Please feel
 free to take look around.
 
+The content on the homepage is from https://wizardofodds.com/
+
+https://wizardofodds.com/games/video-poker/strategy/jacks-or-better/9-6/simple/
+
 ### Setup
 
 Create an `.env` file, then fill out your secrets.
