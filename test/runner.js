@@ -31,6 +31,7 @@ const stopFresh = (serverProcess) => {
   serverProcess.stdout.close();
   serverProcess.kill("SIGKILL");
   serverProcess.close();
+  console.log("Fresh Stopped");
 };
 
 export const freshTestWrapper = (theTests) => async (t) => {
