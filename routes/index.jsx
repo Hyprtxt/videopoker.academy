@@ -290,11 +290,18 @@ export default function Home({ data }) {
         <PayTable />
         <p class="my-5">
           <a
-            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 mb-5 rounded float-left"
+            href="https://wizardofodds.com/games/video-poker/strategy/jacks-or-better/9-6/simple/"
+          >
+            Learn more at The Wizard of Odds
+          </a>
+          <a
+            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 mb-5 rounded float-right"
             href="/deal"
           >
             Play Video Poker Academy
           </a>
+          <div style="clear:both" />
         </p>
         {/* <PokerGame /> */}
       </div>
