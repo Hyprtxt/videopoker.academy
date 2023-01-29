@@ -184,7 +184,7 @@ export default function Home({ data }) {
             class={LINK_CLASS}
             href="https://wizardofodds.com/"
           >
-            Wizard of Odds
+            The Wizard of Odds
           </a>{" "}
           on{" "}
           <a
