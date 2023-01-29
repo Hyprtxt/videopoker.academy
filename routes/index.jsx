@@ -172,6 +172,7 @@ const Footer = () => (
 );
 
 export default function Home({ data }) {
+  const LINK_CLASS = "text-sky-700 underline hover:text-sky-900";
   return (
     <Layout data={data}>
       <div class="p-4 mx-auto max-w-screen-md">
@@ -179,10 +180,19 @@ export default function Home({ data }) {
           Welcome! This site aims to help beginners become better video poker
           players. It's a video poker machine with special rules. It evaluates
           your ability to follow the strategy outlined by{" "}
-          <a href="https://wizardofodds.com/">Wizard of Odds</a> on{" "}
-          <a href="https://wizardofodds.com/games/video-poker/strategy/jacks-or-better/9-6/simple/">
+          <a
+            class={LINK_CLASS}
+            href="https://wizardofodds.com/"
+          >
+            Wizard of Odds
+          </a>{" "}
+          on{" "}
+          <a
+            class={LINK_CLASS}
+            href="https://wizardofodds.com/games/video-poker/strategy/jacks-or-better/9-6/simple/"
+          >
             this page
-          </a>
+          </a>.
         </p>
 
         <p class="my-5">
@@ -190,7 +200,7 @@ export default function Home({ data }) {
           enter will deal/draw/start a game depending on context.
         </p>
         <p class="my-5">
-          Sounds great, lets play:
+          Sound good? Then lets play:
         </p>
         <Keyboard />
         <form action="/deal">
