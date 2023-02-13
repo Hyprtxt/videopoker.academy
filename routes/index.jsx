@@ -210,6 +210,23 @@ export default function Home({ data }) {
             value="Video Poker Academy"
           />
         </form>
+        <p class="my-5">
+          Wait, you just wanted regular old Video Poker?
+        </p>
+        <a
+          href="//classic.videopoker.academy"
+          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Classic Video Poker
+        </a>
+        <p class="my-5">
+          <a
+            class={LINK_CLASS}
+            href="https://github.com/digitaldesigndj/javascript-video-poker"
+          >
+            source
+          </a>
+        </p>
         {
           /* <div class="grid sm:grid-cols-2">
           <div class="my-5">
