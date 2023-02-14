@@ -34,7 +34,7 @@ This will watch the project directory and restart as necessary.
 Use this command to get the secret contents
 
 ```
-base64 .env.github | pbcopy
+base64 -i .env.github | pbcopy
 ```
 
 secret name should be `ENV_GITHUB_ACTIONS`
