@@ -13,6 +13,13 @@ Deno.test(
       assertEquals(response.status(), 200);
     });
 
+    await t.step("The sitemap should work", async () => {
+      const response = await page.goto(`${BASE_URL}/sitemap.xml`, {
+        waitUntil: "networkidle2",
+      });
+      assertEquals(response.status(), 200);
+    });
+
     await t.step("The deal page should work", async () => {
       const response = await page.goto(`${BASE_URL}/deal`, {
         waitUntil: "networkidle2",

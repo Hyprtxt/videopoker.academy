@@ -10,7 +10,6 @@ export const handler = {
       manifest,
     );
     sitemap.routes.map((route) => {
-      console.log(route);
       switch (route.pathName) {
         case "/deal":
         case "/draw":
