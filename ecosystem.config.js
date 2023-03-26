@@ -3,4 +3,4 @@ module.exports = {
     name: "videopoker.academy",
     script: "deno task run",
   }],
-};
+}

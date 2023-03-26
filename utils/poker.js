@@ -1,18 +1,18 @@
-import { SUITS, VALUES } from "@/utils/deck.js";
+import { SUITS, VALUES } from "@/utils/deck.js"
 
 // Jacks or Better Video Poker Scoring
 const getHandSuitsValuesSorted = (input_cards) => {
-  const hand_values = [];
+  const hand_values = []
   const hand_suits = input_cards.map((card, _i) => {
-    hand_values.push(card.split("")[1]);
-    return card.split("")[0];
-  });
-  hand_values.sort((a, b) => VALUES.indexOf(a) - VALUES.indexOf(b));
+    hand_values.push(card.split("")[1])
+    return card.split("")[0]
+  })
+  hand_values.sort((a, b) => VALUES.indexOf(a) - VALUES.indexOf(b))
   return {
     hand_suits,
     hand_values,
-  };
-};
+  }
+}
 
 export const STRAIGHTS_LIST = [
     VALUES.slice(0, 5),
@@ -25,104 +25,104 @@ export const STRAIGHTS_LIST = [
     VALUES.slice(7, 12),
     VALUES.slice(8, 13),
   ],
-  ROYAL_STRAIGHT = [VALUES[0], ...VALUES.slice(9, 13)];
+  ROYAL_STRAIGHT = [VALUES[0], ...VALUES.slice(9, 13)]
 
 export const score = (hand_cards = [], bet = 5) => {
-  const { hand_suits, hand_values } = getHandSuitsValuesSorted(hand_cards);
+  const { hand_suits, hand_values } = getHandSuitsValuesSorted(hand_cards)
   // bet = bet || 5
   // console.log(hand_suits, hand_values)
-  let royal = false;
-  let straight = false;
-  let flush = false;
-  let pair1 = false;
-  let pair2 = false;
-  let triple = false;
-  let quad = false;
-  let jacksorbetter = false;
+  let royal = false
+  let straight = false
+  let flush = false
+  let pair1 = false
+  let pair2 = false
+  let triple = false
+  let quad = false
+  let jacksorbetter = false
   if (JSON.stringify(hand_values) === JSON.stringify(ROYAL_STRAIGHT)) {
-    royal = true;
+    royal = true
   }
   STRAIGHTS_LIST.forEach((v, _i) => {
-    if (JSON.stringify(hand_values) === JSON.stringify(v)) straight = true;
-  });
+    if (JSON.stringify(hand_values) === JSON.stringify(v)) straight = true
+  })
   // Values Count
   VALUES.forEach((v, i) => {
-    let count;
-    count = 0;
+    let count
+    count = 0
     hand_values.forEach((val, _idx) => {
-      if (val === v) count++;
-    });
+      if (val === v) count++
+    })
     if (count === 2) {
-      if (i >= 10 || i === 0) jacksorbetter = true;
-      if (pair1 === true) pair2 = true;
-      else pair1 = true;
+      if (i >= 10 || i === 0) jacksorbetter = true
+      if (pair1 === true) pair2 = true
+      else pair1 = true
     }
-    if (count === 3) triple = true;
-    if (count === 4) quad = true;
-  });
+    if (count === 3) triple = true
+    if (count === 4) quad = true
+  })
   // Suits Count
   SUITS.forEach((v, _i) => {
-    let count;
-    count = 0;
+    let count
+    count = 0
     hand_suits.forEach((val, _idx) => {
-      if (val === v) count++;
-    });
-    if (count === 5) flush = true;
-  });
+      if (val === v) count++
+    })
+    if (count === 5) flush = true
+  })
   // Scoring
   if (royal && flush) {
     return {
       status: "royalflush",
       win: bet * 800,
-    };
+    }
   } else if (straight && flush) {
     return {
       status: "straightflush",
       win: bet * 50,
-    };
+    }
   } else if (quad) {
     return {
       status: "4kind",
       win: bet * 25,
-    };
+    }
   } else if (triple && pair1) {
     return {
       status: "fullhouse",
       win: bet * 9,
-    };
+    }
   } else if (flush) {
     return {
       status: "flush",
       win: bet * 6,
-    };
+    }
   } else if (straight || royal) {
     return {
       status: "straight",
       win: bet * 4,
-    };
+    }
   } else if (triple) {
     return {
       status: "3kind",
       win: bet * 3,
-    };
+    }
   } else if (pair1 && pair2) {
     return {
       status: "2pair",
       win: bet * 2,
-    };
+    }
   } else if (jacksorbetter) {
     return {
       status: "jacksbetter",
       win: bet * 1,
-    };
+    }
   } else if (pair1) {
     return {
       status: "lowpair",
       win: 0,
-    };
+    }
   }
   return {
     status: "ulose",
     win: 0,
-  };
-};
+  }
+}

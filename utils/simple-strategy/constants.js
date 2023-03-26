@@ -1,5 +1,5 @@
-import { VALUES } from "@/utils/deck.js";
-import { ROYAL_STRAIGHT, STRAIGHTS_LIST } from "@/utils/poker.js";
+import { VALUES } from "@/utils/deck.js"
+import { ROYAL_STRAIGHT, STRAIGHTS_LIST } from "@/utils/poker.js"
 
 export const STRATEGY_RULES = [
   { number: 0, rule: "Is Filler" },
@@ -22,14 +22,14 @@ export const STRATEGY_RULES = [
   { number: 14, rule: "Hold Suited 10/J, 10/Q, or 10/K" },
   { number: 15, rule: "Hold 1 High Card" },
   { number: 16, rule: "Hold Nothing" },
-];
+]
 
 export const ONLY_HIGH_CARDS = [
   VALUES[10],
   VALUES[11],
   VALUES[12],
   VALUES[0],
-];
+]
 
 export const HIGH_CARDS_ORDER = [
   VALUES[1],
@@ -45,7 +45,7 @@ export const HIGH_CARDS_ORDER = [
   VALUES[11],
   VALUES[12],
   VALUES[0],
-];
+]
 
 export const OUTSIDE_STRAIGHTS = [
   [VALUES[0], VALUES[1], VALUES[2], VALUES[3]],
@@ -59,6 +59,6 @@ export const OUTSIDE_STRAIGHTS = [
   [VALUES[8], VALUES[9], VALUES[10], VALUES[11]],
   [VALUES[9], VALUES[10], VALUES[11], VALUES[12]],
   [VALUES[0], VALUES[10], VALUES[11], VALUES[12]],
-];
+]
 
-export const ALL_STRAIGHTS = STRAIGHTS_LIST.concat([ROYAL_STRAIGHT]);
+export const ALL_STRAIGHTS = STRAIGHTS_LIST.concat([ROYAL_STRAIGHT])

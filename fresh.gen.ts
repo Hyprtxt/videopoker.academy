@@ -2,18 +2,18 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import config from "./deno.json" assert { type: "json" };
-import * as $0 from "./routes/_404.jsx";
-import * as $1 from "./routes/_middleware.jsx";
-import * as $2 from "./routes/deal.jsx";
-import * as $3 from "./routes/draw.jsx";
-import * as $4 from "./routes/index.jsx";
-import * as $5 from "./routes/player.jsx";
-import * as $6 from "./routes/sitemap.xml.js";
-import * as $$0 from "./islands/Card.jsx";
-import * as $$1 from "./islands/Debug.jsx";
-import * as $$2 from "./islands/Keyboard.jsx";
-import * as $$3 from "./islands/PokerPlayer.jsx";
+import config from "./deno.json" assert { type: "json" }
+import * as $0 from "./routes/_404.jsx"
+import * as $1 from "./routes/_middleware.jsx"
+import * as $2 from "./routes/deal.jsx"
+import * as $3 from "./routes/draw.jsx"
+import * as $4 from "./routes/index.jsx"
+import * as $5 from "./routes/player.jsx"
+import * as $6 from "./routes/sitemap.xml.js"
+import * as $$0 from "./islands/Card.jsx"
+import * as $$1 from "./islands/Debug.jsx"
+import * as $$2 from "./islands/Keyboard.jsx"
+import * as $$3 from "./islands/PokerPlayer.jsx"
 
 const manifest = {
   routes: {
@@ -33,6 +33,6 @@ const manifest = {
   },
   baseUrl: import.meta.url,
   config,
-};
+}
 
-export default manifest;
+export default manifest

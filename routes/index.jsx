@@ -1,16 +1,16 @@
-import { apply } from "twind";
-import { asset, Head } from "$fresh/runtime.ts";
-import Card from "@/islands/Card.jsx";
-import Debug from "@/islands/Debug.jsx";
-import Keyboard from "@/islands/Keyboard.jsx";
+import { apply } from "twind"
+import { asset, Head } from "$fresh/runtime.ts"
+import Card from "@/islands/Card.jsx"
+import Debug from "@/islands/Debug.jsx"
+import Keyboard from "@/islands/Keyboard.jsx"
 // import PokerGame from "../islands/PokerGame.jsx";
-import { DENO_ENV, GA_ID } from "@/utils/config.js";
+import { DENO_ENV, GA_ID } from "@/utils/config.js"
 
 export const handler = {
   GET: (_req, ctx) => {
-    return ctx.render({ ...ctx.state });
+    return ctx.render({ ...ctx.state })
   },
-};
+}
 
 const Nav = () => (
   <div class="bg-teal-500">
@@ -31,7 +31,7 @@ const Nav = () => (
       </div>
     </nav>
   </div>
-);
+)
 
 export const Layout = ({ children, data }) => {
   return (
@@ -69,8 +69,8 @@ export const Layout = ({ children, data }) => {
       <Footer />
       {DENO_ENV === "development" ? <Debug data={data} /> : <></>}
     </>
-  );
-};
+  )
+}
 
 const Footer = () => (
   <div class="p-4 mx-auto max-w-screen-md">
@@ -169,10 +169,10 @@ const Footer = () => (
       </a>
     </p>
   </div>
-);
+)
 
 export default function Home({ data }) {
-  const LINK_CLASS = "text-sky-700 underline hover:text-sky-900";
+  const LINK_CLASS = "text-sky-700 underline hover:text-sky-900"
   return (
     <Layout data={data}>
       <div class="p-4 mx-auto max-w-screen-md">
@@ -327,11 +327,11 @@ export default function Home({ data }) {
         {/* <pre>{JSON.stringify( data, null, 2 )}</pre> */}
       </div>
     </Layout>
-  );
+  )
 }
 
 export const PokerGame = ({ cards, result, deck_id }) => {
-  const cards_wrapper_classes = "flex gap-2 w-full grid grid-cols-5 hand";
+  const cards_wrapper_classes = "flex gap-2 w-full grid grid-cols-5 hand"
   if (!cards) {
     return (
       <form action="/deal">
@@ -348,7 +348,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
           value="Deal a Hand (5 Credits)"
         />
       </form>
-    );
+    )
   }
   if (!result) {
     return (
@@ -366,7 +366,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
           value="Draw new Cards"
         />
       </form>
-    );
+    )
   }
   // console.log(result);
   return (
@@ -432,11 +432,11 @@ export const PokerGame = ({ cards, result, deck_id }) => {
         )
         : <></>}
     </>
-  );
-};
+  )
+}
 
 const PayTable = () => {
-  const CELL_STYLE = "border border-yellow-300 p-1";
+  const CELL_STYLE = "border border-yellow-300 p-1"
   return (
     <div class="overflow-x-auto relative bg-sky-800 text-yellow-300 p-1 w-full my-5">
       <table class="w-full text-sm text-right">
@@ -464,8 +464,8 @@ const PayTable = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
 const PAY_TABLE = [
   {
@@ -473,9 +473,9 @@ const PAY_TABLE = [
     status: "royalflush",
     win: (bet) => {
       if (bet === 5) {
-        return bet * 800;
+        return bet * 800
       }
-      return bet * 250;
+      return bet * 250
     },
   },
   {
@@ -526,4 +526,4 @@ const PAY_TABLE = [
   //   status: "ulose",
   //   win: (bet) => 0,
   // },
-];
+]

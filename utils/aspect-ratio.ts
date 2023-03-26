@@ -6,29 +6,29 @@ import type {
   Directive,
   MaybeThunk,
   ThemeSection,
-} from "twind";
-import { apply, directive } from "twind";
+} from "twind"
+import { apply, directive } from "twind"
 
 declare module "twind" {
   interface Theme {
-    aspectRatio?: ThemeSection<string>;
+    aspectRatio?: ThemeSection<string>
   }
 }
 
 export interface Ratio {
-  w: string | number;
-  h: string | number;
+  w: string | number
+  h: string | number
 }
 
 export interface AspectRatio {
-  (ratio: "none" | `${number}/${number}` | Ratio): Directive<CSSRules>;
-  (width: string | number, height: string | number): Directive<CSSRules>;
-  (parts: string[], context: Context): Directive<CSSRules>;
+  (ratio: "none" | `${number}/${number}` | Ratio): Directive<CSSRules>
+  (width: string | number, height: string | number): Directive<CSSRules>
+  (parts: string[], context: Context): Directive<CSSRules>
 }
 
 const aspectRatioCalc = () => ({
   paddingBottom: `calc(var(--tw-aspect-h)/var(--tw-aspect-w)*100%)`,
-});
+})
 
 const aspectRatio$ = (
   ratio: "none" | { w?: string | number; h?: string | number },
@@ -79,7 +79,7 @@ const aspectRatio$ = (
         //   },
         // },
       },
-    };
+    }
 
 export const aspectRatio = ((
   ratio: "none" | Ratio | string | number | string[],
@@ -89,41 +89,41 @@ export const aspectRatio = ((
     switch (ratio[0]) {
       // aspect-w-16
       case "w":
-        return directive(aspectRatio$, { w: ratio[1] });
+        return directive(aspectRatio$, { w: ratio[1] })
       // aspect-h-9
       case "h":
-        return directive(aspectRatio$, { h: ratio[1] });
+        return directive(aspectRatio$, { h: ratio[1] })
       // aspect-none
       case "none":
-        return directive(aspectRatio$, ratio[0]);
+        return directive(aspectRatio$, ratio[0])
       default: {
         // aspect-16/9
         if (ratio.length === 1) {
-          ratio = ratio[0].split("/");
+          ratio = ratio[0].split("/")
         }
 
         // aspect-16-9
-        return directive(aspectRatio$, { w: ratio[0], h: ratio[1] });
+        return directive(aspectRatio$, { w: ratio[0], h: ratio[1] })
       }
     }
   }
 
   // aspectRatio('none')
   if (ratio === "none") {
-    return directive(aspectRatio$, ratio);
+    return directive(aspectRatio$, ratio)
   }
 
   // aspectRatio({w: 16, h: 9})
   if (typeof ratio === "object") {
-    return directive(aspectRatio$, ratio);
+    return directive(aspectRatio$, ratio)
   }
 
   // aspectRatio(16, 9)
   if (context !== undefined) {
-    return directive(aspectRatio$, { w: ratio, h: context as string | number });
+    return directive(aspectRatio$, { w: ratio, h: context as string | number })
   }
 
   // aspectRatio('16/9')
-  const [w, h] = (ratio as string).split("/");
-  return directive(aspectRatio$, { w, h });
-}) as AspectRatio;
+  const [w, h] = (ratio as string).split("/")
+  return directive(aspectRatio$, { w, h })
+}) as AspectRatio

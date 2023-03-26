@@ -1,6 +1,6 @@
 // Load dotenv over Deno.env
-import { load } from "$std/dotenv/mod.ts";
-import { cleanEnv, host, port, str, url } from "envalid";
+import { load } from "$std/dotenv/mod.ts"
+import { cleanEnv, host, port, str, url } from "envalid"
 
 const ENV = cleanEnv(await load(), {
   // API_URL: url(),
@@ -11,7 +11,7 @@ const ENV = cleanEnv(await load(), {
   REDIS_HOST: host(),
   REDIS_PORT: port(),
   PORT: port(),
-});
+})
 
 export const {
   // API_URL,
@@ -22,6 +22,6 @@ export const {
   REDIS_PASS,
   REDIS_PORT,
   PORT,
-} = ENV;
+} = ENV
 
-export default ENV;
+export default ENV

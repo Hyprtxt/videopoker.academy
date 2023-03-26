@@ -1,5 +1,5 @@
-import PokerPlayer from "@/islands/PokerPlayer.jsx";
-import { Layout } from "@/routes/index.jsx";
+import PokerPlayer from "@/islands/PokerPlayer.jsx"
+import { Layout } from "@/routes/index.jsx"
 
 export default function Home() {
   return (
@@ -16,5 +16,5 @@ export default function Home() {
         <PokerPlayer count={3} />
       </div>
     </Layout>
-  );
+  )
 }

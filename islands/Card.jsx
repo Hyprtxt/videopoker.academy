@@ -1,26 +1,25 @@
-import { useState } from "preact/hooks";
-import { apply, tw } from "twind";
-import { aspectRatio } from "@/utils/aspect-ratio.ts";
+import { useState } from "preact/hooks"
+import { apply, tw } from "twind"
+import { aspectRatio } from "@/utils/aspect-ratio.ts"
 
 export const Card = ({ card, idx, hold, active = false }) => {
   // const btn = apply`inline-block bg-gray-500 text-base`;
-  const INDEX = idx + 1;
-  const card_base_style =
-    apply`mb-4 rounded overflow-hidden shadow-lg border-4`;
-  const card_back_style = apply`${card_base_style} border-sky-600 `;
-  const card_front_style = apply`${card_base_style} bg-white border-sky-200`;
-  const card_hold_style = apply`${card_base_style} bg-white border-sky-400`;
+  const INDEX = idx + 1
+  const card_base_style = apply`mb-4 rounded overflow-hidden shadow-lg border-4`
+  const card_back_style = apply`${card_base_style} border-sky-600 `
+  const card_front_style = apply`${card_base_style} bg-white border-sky-200`
+  const card_hold_style = apply`${card_base_style} bg-white border-sky-400`
   const button_style =
-    apply`text-center cursor-pointer bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded w-full`;
+    apply`text-center cursor-pointer bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded w-full`
   // console.log(card);
   if (!card) {
     return (
       <div
         class={tw`${card_back_style} ${aspectRatio("2.5/3.5")} bg-sky-500`}
       />
-    );
+    )
   }
-  const [suit, val] = card;
+  const [suit, val] = card
   // console.log(suit, val, card, "yep");
   if (!active) {
     return (
@@ -39,15 +38,15 @@ export const Card = ({ card, idx, hold, active = false }) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
   if (!hold) {
-    hold = false;
+    hold = false
   }
-  const [s_hold, setHold] = useState(false);
+  const [s_hold, setHold] = useState(false)
   const handleClick = (e) => {
-    setHold((curr) => !curr);
-  };
+    setHold((curr) => !curr)
+  }
   return (
     <div class="mb-4 w-full">
       <div
@@ -87,7 +86,7 @@ export const Card = ({ card, idx, hold, active = false }) => {
         )
         : <></>}
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

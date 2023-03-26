@@ -1,7 +1,7 @@
-import { useState } from "preact/hooks";
+import { useState } from "preact/hooks"
 
 export const Debug = ({ data }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   return data
     ? (
       <div class="p-4 mx-auto max-w-screen-md">
@@ -12,7 +12,7 @@ export const Debug = ({ data }) => {
             data-bs-toggle="collapse"
             data-bs-target="#collapseExample"
             onClick={(_e) => {
-              setOpen((current) => !current);
+              setOpen((current) => !current)
             }}
           >
             {open ? `Hide` : `Show`} View Props
@@ -29,7 +29,7 @@ export const Debug = ({ data }) => {
       <div class="p-4 mx-auto max-w-screen-md">
         <p class="mb-4">No developer data found</p>
       </div>
-    );
-};
+    )
+}
 
-export default Debug;
+export default Debug
