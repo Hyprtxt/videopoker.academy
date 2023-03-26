@@ -205,7 +205,7 @@ export default function Home({ data }) {
         <Keyboard />
         <form action="/deal">
           <input
-            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
+            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
             type="submit"
             value="Video Poker Academy"
           />
@@ -215,7 +215,7 @@ export default function Home({ data }) {
         </p>
         <a
           href="//classic.videopoker.academy"
-          class={LINK_CLASS}
+          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
         >
           Classic Video Poker
         </a>
@@ -343,7 +343,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
           <Card />
         </div>
         <input
-          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right cursor-pointer"
           type="submit"
           value="Deal a Hand (5 Credits)"
         />
@@ -361,7 +361,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
           ))}
         </div>
         <input
-          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+          class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right cursor-pointer"
           type="submit"
           value="Draw new Cards"
         />
@@ -387,7 +387,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
                 ))}
               </div>
               <input
-                class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+                class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right cursor-pointer"
                 type="submit"
                 value="Play Another Hand"
               />

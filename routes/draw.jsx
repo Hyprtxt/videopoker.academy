@@ -93,7 +93,7 @@ export default function Home({ data }) {
               <p class="my-5">
                 <form action="/">
                   <input
-                    class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right"
+                    class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded float-right cursor-pointer"
                     type="submit"
                     value="Go back to the rules"
                   />
