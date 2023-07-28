@@ -1,8 +1,9 @@
-// Load dotenv over Deno.env
 import { load } from "$std/dotenv/mod.ts"
 import { cleanEnv, port, str, url } from "envalid"
 
-const ENV = cleanEnv(await load(), {
+const RAW_ENV = Object.assign(Deno.env.toObject(), await load())
+
+const ENV = cleanEnv(RAW_ENV, {
   // API_URL: url(),
   BASE_URL: url(),
   CURRENT_ENV: str({ choices: ["development", "testing", "production"] }),
