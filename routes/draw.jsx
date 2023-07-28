@@ -8,13 +8,15 @@ export const handler = {
     return ctx.renderNotFound()
   },
   POST: async (req, ctx) => {
+    const { session } = ctx.state
     const data = await req.formData()
     console.log(data)
     // const deck = getNewCards();
     // const deck_id = crypto.randomUUID();
     // const cards = deck.splice(0, 5);
     const deck_id = data.get("deck_id")
-    const redis_data = await ctx.store.get(`deck-${deck_id}`)
+    const redis_data = session.get(`deck-${deck_id}`)
+    // await ctx.store.get(`deck-${deck_id}`)
     if (redis_data) {
       const hold_1 = data.get("hold_1") ? true : false
       const hold_2 = data.get("hold_2") ? true : false
@@ -30,7 +32,7 @@ export const handler = {
       const next = [...redis_data_parsed.deck].splice(5, 5)
       const cards = holds.map((v, i) => v ? hand[i] : next[i])
       const strategy = simpleStrategy(hand)
-      console.log(user_strategy, strategy.strategy)
+      // console.log(user_strategy, strategy.strategy)
       const winner =
         JSON.stringify(user_strategy) === JSON.stringify(strategy.strategy)
           ? true
@@ -43,17 +45,24 @@ export const handler = {
       })
       // console.log(redis_data_parsed.deck.length, "deck length");
       if (winner) {
-        if (ctx.state.streak) {
-          ctx.state.streak = ctx.state.streak + 1
+        console.log(session.data, "datas")
+        if (session.has("streak")) {
+          const streak = session.get("streak") + 1
+          ctx.state.streak = streak
+          session.set("streak", streak)
         } else {
+          session.set("streak", 1)
           ctx.state.streak = 1
         }
       } else {
-        ctx.state.final = parseInt(ctx.state.streak)
+        ctx.state.final = session.get("streak")
+        session.set("streak", 0)
         ctx.state.streak = 0
       }
-      ctx.store.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }))
-      ctx.store.expire(`deck-${deck_id}`, 0)
+      // ctx.store.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }))
+      session.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }))
+      // ctx.store.expire(`deck-${deck_id}`, 0)
+      session.set(`deck-${deck_id}`, null)
       return ctx.render({
         ...ctx.state,
         cards,

@@ -1,5 +1,5 @@
-import { assertEquals } from "$std/testing/asserts.ts"
-import { freshPuppetTestWrapper } from "fresh_marionette"
+import { assertEquals } from "$std/assert/mod.ts"
+import { freshPuppetTestWrapper } from "@/test/wrapper.js"
 import { BASE_URL } from "@/utils/config.js"
 import { simpleStrategy } from "@/utils/simple-strategy/mod.js"
 import { puppet_config } from "@/test/config.js"
@@ -31,6 +31,7 @@ const playGameOfPoker = async (page, done = false) => {
 
 Deno.test(
   "Game Testing",
+  { sanitizeResources: false, sanitizeOps: false },
   freshPuppetTestWrapper(puppet_config, async (t, page) => {
     await t.step(
       "The deal page should play 10 perfect hands of poker",

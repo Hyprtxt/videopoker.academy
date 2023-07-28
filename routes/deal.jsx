@@ -4,11 +4,12 @@ import Keyboard from "@/islands/Keyboard.jsx"
 
 export const handler = {
   GET: (req, ctx) => {
+    const { session } = ctx.state
     const deck = getNewCards()
     const deck_id = crypto.randomUUID()
     const cards = [...deck].splice(0, 5)
-    ctx.store.set(`deck-${deck_id}`, JSON.stringify({ deck }))
-    ctx.store.expire(`deck-${deck_id}`, 5 * 60)
+    session.set(`deck-${deck_id}`, JSON.stringify({ deck }))
+    // ctx.store.expire(`deck-${deck_id}`, 5 * 60)
     return ctx.render({ ...ctx.state, cards, deck_id })
   },
   POST: async (req, ctx) => {

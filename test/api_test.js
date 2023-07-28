@@ -1,4 +1,4 @@
-// import { assertEquals } from "$std/testing/asserts.ts";
+// import { assertEquals } from "$std/assert/mod.ts";
 // import { BASE_URL } from "@/utils/config.js";
 // import { freshTestWrapper } from "@/test/runner.js";
 
