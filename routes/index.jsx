@@ -4,7 +4,7 @@ import Card from "@/islands/Card.jsx"
 import Debug from "@/islands/Debug.jsx"
 import Keyboard from "@/islands/Keyboard.jsx"
 // import PokerGame from "../islands/PokerGame.jsx";
-import { DENO_ENV, GA_ID } from "@/utils/config.js"
+import { CURRENT_ENV, GA_ID } from "@/utils/config.js"
 
 export const handler = {
   GET: (_req, ctx) => {
@@ -43,7 +43,7 @@ export const Layout = ({ children, data }) => {
           content="Video Poker Academy is a fun way to improve your Video Poker skills."
         >
         </meta>
-        {DENO_ENV === "production"
+        {CURRENT_ENV === "production"
           ? (
             <>
               <script
@@ -67,7 +67,7 @@ export const Layout = ({ children, data }) => {
       <Nav />
       {children}
       <Footer />
-      {DENO_ENV === "development" ? <Debug data={data} /> : <></>}
+      {CURRENT_ENV === "development" ? <Debug data={data} /> : <></>}
     </>
   )
 }

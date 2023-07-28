@@ -1,5 +1,5 @@
-import { DENO_ENV } from "@/utils/config.js"
+import { CURRENT_ENV } from "@/utils/config.js"
 
-export const puppet_config = DENO_ENV === "development"
+export const puppet_config = CURRENT_ENV === "development"
   ? { headless: false, defaultViewport: null }
   : { headless: true }
