@@ -38,3 +38,8 @@ base64 -i .env.github | pbcopy
 ```
 
 secret name should be `ENV_GITHUB_ACTIONS`
+
+### Now Compatible with Deno Deploy (with KV Store)
+
+The project has been updated to use KV store in place of Redis. You can check
+that version of the site out here: https://video-poker-academy.deno.dev/
