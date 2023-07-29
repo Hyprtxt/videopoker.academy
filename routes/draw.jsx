@@ -14,8 +14,9 @@ export const handler = {
     // const deck = getNewCards();
     // const deck_id = crypto.randomUUID();
     // const cards = deck.splice(0, 5);
-    const deck_id = data.get("deck_id")
-    const redis_data = session.get(`deck-${deck_id}`)
+    // const deck_id = data.get("deck_id")
+    // const redis_data = session.get(`deck-${deck_id}`)
+    const redis_data = session.get("deck")
     // await ctx.store.get(`deck-${deck_id}`)
     if (redis_data) {
       const hold_1 = data.get("hold_1") ? true : false
@@ -59,11 +60,11 @@ export const handler = {
         session.set("streak", 0)
         ctx.state.streak = 0
       }
-      session.set(`deck-${deck_id}`, null)
+      session.set("deck", null)
+      // session.set(`deck-${deck_id}`, null)
       return ctx.render({
         ...ctx.state,
         cards,
-        deck_id,
         result,
       })
     }

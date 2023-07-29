@@ -330,7 +330,7 @@ export default function Home({ data }) {
   )
 }
 
-export const PokerGame = ({ cards, result, deck_id }) => {
+export const PokerGame = ({ cards, result }) => {
   const cards_wrapper_classes = "flex gap-2 w-full grid grid-cols-5 hand"
   if (!cards) {
     return (
@@ -354,7 +354,7 @@ export const PokerGame = ({ cards, result, deck_id }) => {
     return (
       <form action="/draw" method="POST">
         {/* <input type="hidden" name="next" value={JSON.stringify(cards)} /> */}
-        <input type="hidden" name="deck_id" value={deck_id} />
+        {/* <input type="hidden" name="deck_id" value={deck_id} /> */}
         <div class={cards_wrapper_classes}>
           {cards.map((card, idx) => (
             <Card card={card} idx={idx} active={true} />

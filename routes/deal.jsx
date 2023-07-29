@@ -6,11 +6,12 @@ export const handler = {
   GET: (req, ctx) => {
     const { session } = ctx.state
     const deck = getNewCards()
-    const deck_id = crypto.randomUUID()
+    // const deck_id = crypto.randomUUID()
     const cards = [...deck].splice(0, 5)
-    session.set(`deck-${deck_id}`, JSON.stringify({ deck }))
+    // session.set(`deck-${deck_id}`, JSON.stringify({ deck }))
+    session.set("deck", JSON.stringify({ deck }))
     // ctx.store.expire(`deck-${deck_id}`, 5 * 60)
-    return ctx.render({ ...ctx.state, cards, deck_id })
+    return ctx.render({ ...ctx.state, cards })
   },
   POST: async (req, ctx) => {
     console.log(await req.formData())
@@ -26,7 +27,7 @@ export const handler = {
 
 export default function Home(props) {
   const { data } = props
-  const { cards, deck_id, streak } = data
+  const { cards, streak } = data
   return (
     <Layout data={data}>
       <div class="p-4 mx-auto max-w-screen-md">
@@ -41,7 +42,7 @@ export default function Home(props) {
               Now how many in a row can you do before you make a mistake?
             </p>
           )}
-        <PokerGame cards={cards} deck_id={deck_id} />
+        <PokerGame cards={cards} />
         <Keyboard />
         {/* <pre>{JSON.stringify( props, null, 2 )}</pre> */}
       </div>
