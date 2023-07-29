@@ -10,7 +10,7 @@ export const handler = {
   POST: async (req, ctx) => {
     const { session } = ctx.state
     const data = await req.formData()
-    console.log(data)
+    // console.log(data)
     // const deck = getNewCards();
     // const deck_id = crypto.randomUUID();
     // const cards = deck.splice(0, 5);
@@ -59,9 +59,6 @@ export const handler = {
         session.set("streak", 0)
         ctx.state.streak = 0
       }
-      // ctx.store.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }))
-      session.set(ctx.REDIS_KEY, JSON.stringify({ ...ctx.state }))
-      // ctx.store.expire(`deck-${deck_id}`, 0)
       session.set(`deck-${deck_id}`, null)
       return ctx.render({
         ...ctx.state,

@@ -21,36 +21,35 @@ export async function handler(req, ctx) {
   ]
   let resp
   if (
-    withSession.includes(pathname) ||
-    pathname.startsWith("/api/")
+    withSession.includes(pathname)
   ) {
-    // ctx.API_URL = API_URL;
     ctx.BASE_URL = BASE_URL
     ctx.CURRENT_ENV = CURRENT_ENV
-    // ctx.store = store
-    resp = session(req, ctx)
+    resp = await session(req, ctx)
   } else {
     resp = await ctx.next()
   }
   const now = Date.now()
   const ms = now - start
-  // const status = () => {
-  //   const str = resp.status.toString()
-  //   console.log(str)
-  //   if (str[0] === "2") {
-  //     return green(str)
-  //   }
-  //   if (str[0] === "3") {
-  //     return yellow(str)
-  //   } else {
-  //     return red(str)
-  //   }
-  // }
+  const status = () => {
+    if (resp.status === undefined) {
+      return yellow("?")
+    }
+    const str = resp.status.toString()
+    if (str[0] === "2") {
+      return green(str)
+    }
+    if (str[0] === "3") {
+      return yellow(str)
+    } else {
+      return red(str)
+    }
+  }
   // resp.headers.set("X-Response-Time", `${ms}ms`)
   console.log(
     `[${magenta(new Date(now).toISOString())}] ${blue(req.method)} ${
       cyan(pathname)
-    } - ${blue(String(ms) + "ms")} - ${resp.status}`,
+    } - ${blue(String(ms) + "ms")} - ${status()}`,
   )
   return resp
 }
