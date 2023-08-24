@@ -1,7 +1,9 @@
 import { useState } from "preact/hooks"
+import { tw } from "twind"
 
 export const Debug = ({ data }) => {
   const [open, setOpen] = useState(false)
+  console.log(open)
   return data
     ? (
       <div class="p-4 mx-auto max-w-screen-md">
@@ -18,7 +20,7 @@ export const Debug = ({ data }) => {
             {open ? `Hide` : `Show`} View Props
           </button>
         </p>
-        <div class={open ? `` : `hidden`} id="collapseExample">
+        <div class={open ? tw`` : tw`hidden`} id="collapseExample">
           <div class="bg-white border rounded p-3">
             <pre>{JSON.stringify(data, null, 2)}</pre>
           </div>

@@ -2,6 +2,7 @@ import { Layout, PokerGame } from "@/routes/index.jsx"
 import Keyboard from "@/islands/Keyboard.jsx"
 import { simpleStrategy } from "@/utils/simple-strategy/mod.js"
 import { score } from "@/utils/poker.js"
+import { CURRENT_ENV } from "@/utils/config.js"
 
 export const handler = {
   GET: (_req, ctx) => {
@@ -110,7 +111,9 @@ export default function Home({ data }) {
           )
           : <></>}
         {/* {result.winner ? <a href="/deal">Play More</a> : <></>} */}
-        {/* <pre>{JSON.stringify( data, null, 2 )}</pre> */}
+        {CURRENT_ENV === "development"
+          ? <pre>{JSON.stringify( data, null, 2 )}</pre>
+          : <></>}
       </div>
     </Layout>
   )
